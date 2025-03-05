@@ -1,29 +1,17 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import {
-  combineLatest,
-  finalize,
-  map,
-  Subject,
-  switchMap,
-  takeUntil,
-} from 'rxjs';
-import { LocationService } from '../../services/location.service';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { ILocationModel } from '../../interfaces/location.model';
-import { ToastrService } from 'ngx-toastr';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {combineLatest, finalize, map, Subject, switchMap, takeUntil,} from 'rxjs';
+import {LocationService} from '../../services/location.service';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators,} from '@angular/forms';
+import {ILocationModel} from '../../interfaces/location.model';
+import {ToastrService} from 'ngx-toastr';
 
 
-import { NgbActiveModal, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { NgClass } from '@angular/common';
-import { ICityModel, IProvinceModel } from '../../interfaces/general.model';
-import { GeneralService } from '../../services/general.service';
+import {NgbActiveModal, NgbTooltip} from '@ng-bootstrap/ng-bootstrap';
+import {NgClass} from '@angular/common';
+import {ICityModel, IProvinceModel} from '../../interfaces/general.model';
+import {GeneralService} from '../../services/general.service';
 import {OnlyNumberDirective} from "../../directives/only-number.directive";
+import {Utilities} from '../../Utils/utilities';
 
 
 @Component({

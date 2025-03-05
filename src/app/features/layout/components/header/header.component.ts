@@ -7,7 +7,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthService } from '../../../../auth/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { IUserModel } from '@core/interfaces/user.model';
 import { Subject, takeUntil } from 'rxjs';

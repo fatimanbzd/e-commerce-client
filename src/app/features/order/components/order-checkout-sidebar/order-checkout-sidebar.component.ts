@@ -3,7 +3,7 @@ import { CartService } from '../../../../shared/services/cart.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime, filter } from 'rxjs';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthService } from '../../../../auth/services/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

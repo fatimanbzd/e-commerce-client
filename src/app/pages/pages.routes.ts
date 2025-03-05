@@ -3,7 +3,6 @@ import { ProfilePageComponent } from './dashboard/profile-page/profile-page.comp
 import { UpdateProfilePageComponent } from './dashboard/update-profile-page/update-profile-page.component';
 import { LocationPageComponent } from './dashboard/location-page/location-page.component';
 import { PagesComponent } from './pages.component';
-import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 import { HomePageComponent } from './content/home-page/home-page.component';
 import { AuthGuard } from '../auth/gaurds/auth.guard';
 
@@ -29,6 +28,7 @@ import { QuestionsPageComponent } from './content/footer-items-page/questions-pa
 import { InstructionOrderRegistrationPageComponent } from './content/footer-items-page/instruction-order-registration-page/instruction-order-registration-page.component';
 import { TicketPageComponent } from './dashboard/ticket-page/ticket-page.component';
 import { TicketDetailsPageComponent } from './dashboard/ticket-page/ticket-details-page/ticket-details-page.component';
+import {NotFoundComponent} from '../shared/components/not-found/not-found.component';
 
 export const Pages_ROUTES: Routes = [
   {

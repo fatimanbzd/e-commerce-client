@@ -1,8 +1,8 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
-import { LocalStorageService } from './local-storage.service';
-import {IEnvironmentModel} from '../interfaces/environment.model';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
+import {IEnvironmentModel} from '../../shared/interfaces/environment.model';
 import {IUserModel} from '../interfaces/user.model';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {
   ICustomerRequestLoginModel,
   IMobileVerificationModel,

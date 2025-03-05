@@ -10,7 +10,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { PricePipe } from '@core/pipes/price.pipe';
 import { RouterLink } from '@angular/router';
 import { ICartModel } from '../../../../../shared/interfaces/cart.model';
-import { AuthService } from '../../../../../shared/services/auth.service';
+import { AuthService } from '../../../../../auth/services/auth.service';
 
 @Component({
     selector: 'app-header-product-basket',

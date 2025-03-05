@@ -1,4 +1,4 @@
-import {UserTypeEnum} from '../../auth/enums/user-type.enum';
+import {UserTypeEnum} from '../enums/user-type.enum';
 
 export interface IAuthModel {
   userName: string;

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { AuthService } from '../../../../../shared/services/auth.service';
+import { AuthService } from '../../../../../auth/services/auth.service';
 import { Subject, takeUntil } from 'rxjs';
 import { IUserModel } from '@core/interfaces/user.model';
 

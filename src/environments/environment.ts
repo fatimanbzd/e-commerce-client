@@ -1,4 +1,5 @@
-import { IEnvironmentModel } from '@core/interfaces/environment.model';
+import {IEnvironmentModel} from '../app/shared/interfaces/environment.model';
+
 
 export const environment: IEnvironmentModel = {
   production: false,

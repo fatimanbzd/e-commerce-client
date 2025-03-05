@@ -8,11 +8,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { DigitNumberDirective } from '@core/directives/digit-number.directive';
-import { IMobileVerificationResponseModel } from '@core/interfaces/otp.model';
+
 import { ICustomerRequestLoginModel } from '../../interfaces/login.model';
 import { Subject, takeUntil } from 'rxjs';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import {DigitNumberDirective} from '../../../shared/directives/digit-number.directive';
+import {IMobileVerificationResponseModel} from '../../../shared/interfaces/otp.model';
 
 @Component({
     selector: 'core-otp-verification',

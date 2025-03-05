@@ -8,8 +8,8 @@ import {
 import { Injectable } from '@angular/core';
 import { catchError, EMPTY, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../shared/services/token-storage.service';
-import { UserInformationStorageService } from '../shared/services/user-information-storage.service';
+import { TokenStorageService } from '../auth/services/token-storage.service';
+import { UserInformationStorageService } from '../auth/services/user-information-storage.service';
 
 @Injectable({
   providedIn: 'root',

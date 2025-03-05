@@ -8,7 +8,7 @@ import { IProductCommentResponseModel } from '../../../interfaces/product-commen
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersianDatePipe } from '@core/pipes/persian-date.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../../../../shared/services/auth.service';
+import { AuthService } from '../../../../../auth/services/auth.service';
 import { ProductCommentPaginationComponent } from './product-comment-pagination/product-comment-pagination.component';
 
 @Component({

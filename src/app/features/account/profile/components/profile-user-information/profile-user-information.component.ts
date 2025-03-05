@@ -9,7 +9,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { DecimalPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { IUserModel } from '@core/interfaces/user.model';
-import { AuthService } from '../../../../../shared/services/auth.service';
+import { AuthService } from '../../../../../auth/services/auth.service';
 
 @Component({
     selector: 'app-profile-user-information',

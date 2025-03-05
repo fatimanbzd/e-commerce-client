@@ -3,7 +3,7 @@ import { ICategoryModel } from '../../../interfaces/category.model';
 import { CategoryService } from '../../../services/category.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../../shared/services/auth.service';
+import { AuthService } from '../../../../../auth/services/auth.service';
 
 @Component({
     selector: 'app-category-menu',

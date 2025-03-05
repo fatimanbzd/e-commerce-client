@@ -5,8 +5,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../../../../shared/services/auth.service';
-import { IUpdateUserProfileModel } from '../../../../../shared/interfaces/user.model';
+import { AuthService } from '../../../../../auth/services/auth.service';
+import { IUpdateUserProfileModel } from '../../../../../auth/interfaces/user.model';
 import { finalize, Subject, takeUntil } from 'rxjs';
 import { OnlyNumberDirective } from '@core/directives/only-number.directive';
 import { ToastrService } from 'ngx-toastr';

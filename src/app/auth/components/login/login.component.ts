@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from '../../../shared/services/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {MobileVerificationComponent} from '../mobile-verification/mobile-verification.component';
 import {
   ICustomerLoginModel,

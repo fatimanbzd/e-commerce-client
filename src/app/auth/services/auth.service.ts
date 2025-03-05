@@ -6,13 +6,13 @@ import {
   ICustomerLoginResponseModel,
   ICustomerRequestLoginModel,
   IMobileVerificationModel,
-} from '../../auth/interfaces/login.model';
+} from '../interfaces/login.model';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 
 import { TokenStorageService } from './token-storage.service';
 import { UserInformationStorageService } from './user-information-storage.service';
 import {IAuthModel} from "../interfaces/token.model";
-import {IUserModel} from "../interfaces/user.model";
+import {IUpdateUserProfileModel, IUserModel} from "../interfaces/user.model";
 
 @Injectable({
   providedIn: 'root',

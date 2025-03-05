@@ -1,10 +1,10 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
-import { LocalStorageService } from './local-storage.service';
-import {IEnvironmentModel} from "../interfaces/environment.model";
+import { LocalStorageService } from '../../shared/services/local-storage.service';
+import {IEnvironmentModel} from "../../shared/interfaces/environment.model";
 import {IAuthModel} from "../interfaces/token.model";
-import {ConfigService} from '../config/config.service';
+import {ConfigService} from '../../shared/config/config.service';
 
 @Injectable({
   providedIn: 'root',

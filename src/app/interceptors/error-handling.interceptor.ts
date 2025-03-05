@@ -8,9 +8,9 @@ import {
 import { Inject, Injectable } from '@angular/core';
 import { catchError, EMPTY, Observable, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { IEnvironmentModel } from '@core/interfaces/environment.model';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../shared/services/token-storage.service';
+import { TokenStorageService } from '../auth/services/token-storage.service';
+import {IEnvironmentModel} from '../shared/interfaces/environment.model';
 
 @Injectable({
   providedIn: 'root',

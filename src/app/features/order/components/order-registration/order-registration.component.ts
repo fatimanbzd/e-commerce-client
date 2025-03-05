@@ -1,5 +1,5 @@
 import { Component, DestroyRef, OnInit } from '@angular/core';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthService } from '../../../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../../shared/services/cart.service';
 import { OrderNavigationService } from '../../../../shared/services/order-navigation.service';
 import { Utilities } from '@core/Utils/utilities';
-import { IUpdateUserProfileModel } from '../../../../shared/interfaces/user.model';
+import { IUpdateUserProfileModel } from '../../../../auth/interfaces/user.model';
 import { finalize } from 'rxjs';
 
 @Component({

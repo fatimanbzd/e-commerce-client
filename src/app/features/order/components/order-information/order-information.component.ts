@@ -16,7 +16,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { FullSrcPipe } from '@core/pipes/full-src.pipe';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthService } from '../../../../auth/services/auth.service';
 import { Utilities } from '@core/Utils/utilities';
 import { Router } from '@angular/router';
 import { OrderNavigationService } from '../../../../shared/services/order-navigation.service';

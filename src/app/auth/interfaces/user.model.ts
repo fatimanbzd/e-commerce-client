@@ -13,3 +13,8 @@ export interface IUserViewModel {
   mobileNumber: string;
   displayName: string;
 }
+export interface IUpdateUserProfileModel {
+  name: string;
+  family: string;
+  nationalNumber: string;
+}
