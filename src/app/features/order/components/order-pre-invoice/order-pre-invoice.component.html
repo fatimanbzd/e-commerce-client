@@ -1,0 +1,72 @@
+<div class="cpg-form p-4 rounded shadow-lg bg-light">
+  @if (invoice) {
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">پیش فاکتور</h3>
+      <p class="text-muted">شماره فاکتور: {{ invoice.invoiceNumber }}</p>
+    </div>
+
+    <div class="row g-4 d-flex align-items-stretch">
+      <div class="col-12 col-md-6 mb-4 d-flex">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3">
+              <i class="bi bi-person-circle"></i> اطلاعات فروشنده
+            </h5>
+            <hr class="mt-1 mb-3" />
+            <p><strong>نام:</strong> {{ invoice.sellerFullName }}</p>
+            <p><strong>آدرس:</strong> {{ invoice.sellerAddress }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3">
+              <i class="bi bi-people-fill"></i> اطلاعات مشتری
+            </h5>
+            <hr class="mt-1 mb-3" />
+            <p><strong>نام:</strong> {{ invoice.customerFullName }}</p>
+            <p><strong>شماره تماس:</strong> {{ invoice.customerMobile }}</p>
+            <p><strong>کد ملی:</strong> {{ invoice.customerNationalNumber }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-1">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h5 class="fw-bold mb-3">
+            <i class="bi bi-receipt"></i> جزئیات فاکتور
+          </h5>
+          <hr class="mt-1 mb-3" />
+          <p>
+            <strong>تاریخ فاکتور:</strong>
+            {{ invoice.invoiceDate | persianDate }}
+          </p>
+          <p>
+            <strong>مبلغ کل:</strong>
+            {{ invoice.invoiceTotalAmount | price }} ریال
+          </p>
+          <p><strong>توضیحات:</strong> {{ invoice.invoiceDescription }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recipient Info -->
+    <div class="mt-4">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h5 class="fw-bold mb-3">
+            <i class="bi bi-truck"></i> اطلاعات گیرنده
+          </h5>
+          <p><strong>نام:</strong> {{ invoice.recipientFullName }}</p>
+          <p><strong>آدرس:</strong> {{ invoice.recipientAddress }}</p>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="p-lg-5 text-center empty-data">اطلاعاتی موجود نیست</div>
+  }
+</div>

@@ -1,0 +1,24 @@
+<div class="modal-body text-center">
+  <div class="check-container">
+    <i class="fa fa-check-circle-o tick"></i>
+  </div>
+  <h1>با موفقیت اضافه شد</h1>
+  <p>
+    محصول مورد نظر با موفقیت به سبد خرید شما اضافه شد برای رزرو محصول سفارش خود
+    را نهایی کنید.
+  </p>
+
+  <button
+    type="button"
+    class="btn btn-primary btn-with-icon ml-2"
+    (click)="activeModal.close(false)"
+  >
+    باشه
+  </button>
+</div>
+
+<div class="modal-footer text-center justify-content-center">
+  <button (click)="goToCart()" class="btn btn-link ml-2">
+    <strong> مشاهده سبد خرید</strong>
+  </button>
+</div>

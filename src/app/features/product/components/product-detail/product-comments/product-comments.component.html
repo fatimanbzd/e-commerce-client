@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="header_comment">
+
+      <button class="btn-qLand-primary" (click)="addComment()">
+        <span class="fa fa-comment"></span>
+        افزودن نظر
+      </button>
+    </div>
+
+    @if (comments && comments.items) {
+      <div class="body_comment">
+        <div class="row">
+          <ul class="col-md-12">
+            @for (comment of comments.items; track comment; let i = $index) {
+              <li class="box_result row">
+                <div class="result_comment col-md-11">
+                  <p><span>{{ comment.customerName }} </span>-<small>
+                    {{ comment.createDate | persianDate }}</small>
+
+                    @if (comment.isBuyer) {
+                      <small class="text-caption-strong">خریدار</small>
+                    }
+                  </p>
+                  <ngb-rating [(rate)]="comment.rating" [disabled]="true" [max]="5">
+                    <ng-template let-fill="fill" let-index="index">
+                      <i class="fa fa-star{{ fill === 100 ? '' : '-o' }}" [class.filled]="fill === 100"></i>
+                    </ng-template>
+                  </ngb-rating>
+                  <br>
+                  <strong>{{ comment.title }}</strong>
+                  <p>{{ comment.body }}</p>
+                  @if (comment.advantages) {
+                    <ul class="advantage-list">
+                      @for (ad of comment.advantages; track $index) {
+                        <li>
+                          <div>
+                            <span class="fa fa-circle text-success"></span>
+                            <span>{{ ad }}</span>
+                          </div>
+                        </li>
+                      }
+                    </ul>
+                  }
+                  @if (comment.disadvantages) {
+                    <ul class="disadvantage-list">
+                      @for (disAd of comment.disadvantages; track $index) {
+
+                        <li>
+                          <div>
+                            <span class="fa fa-circle text-danger"></span>
+                            <span>{{ disAd }}</span>
+                          </div>
+                        </li>
+                      }
+                    </ul>
+                  }
+
+                </div>
+              </li>
+              @if (i < comments.items.length - 1) {
+                <hr>
+              }
+            }
+          </ul>
+        </div>
+
+        <div class="col-12">
+          @if (comments.items.length > 3) {
+          <div class="pagination">
+            <app-product-comment-pagination
+              [itemsPerPage]="pageSize"
+              [totalItems]="comments.totalCount"
+              (pageChanged)="getComments(productId,$event, pageSize)"
+            ></app-product-comment-pagination>
+          </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

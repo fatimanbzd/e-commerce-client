@@ -1,0 +1,9 @@
+@if (breadcrumbs$ && (breadcrumbs$ | async)?.length) {
+  <nav>
+    <a routerLink="/">خانه</a>
+
+    @for (breadcrumb of breadcrumbs$ | async; track breadcrumb) {
+      <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+    }
+  </nav>
+}

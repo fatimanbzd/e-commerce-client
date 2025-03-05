@@ -1,0 +1,67 @@
+@if (totalPrice) {
+  <div
+    class="checkout-container">
+    <div class="dt-sn mb-2 details">
+      <ul class="checkout-summary-summary">
+        <li>
+          <span>مبلغ کل </span><span>{{ totalPrice | price }} ريال</span>
+        </li>
+
+        <li>
+          <span>هزینه ارسال</span>
+          <span>وابسته به آدرس</span>
+        </li>
+      </ul>
+      <div class="checkout-summary-divider">
+        <div></div>
+      </div>
+      <div class="checkout-summary-content">
+        <div class="checkout-summary-price-title">مبلغ قابل پرداخت:</div>
+        <div class="checkout-summary-price-value">
+          <span id="final-price" class="checkout-summary-price-value-amount">
+            {{ totalPrice | price }}
+          </span>
+          ريال
+        </div>
+
+        <div class="mt-3 mb-3 text-center">
+          <a
+            class="btn-qLand-primary btn-with-icon w-100 m-auto pr-0 d-block checkout_link"
+            (click)="onProceedToNextStep(currentUrl)"
+          >
+            <svg
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              stroke-linejoin="round"
+              stroke-miterlimit="2"
+              viewBox="0 0 24 24"
+              class="arrow-btn"
+            >
+              <path
+                d="m9.474 5.209s-4.501 4.505-6.254 6.259c-.147.146-.22.338-.22.53s.073.384.22.53c1.752
+             1.754 6.252 6.257 6.252 6.257.145.145.336.217.527.217.191-.001.383-.074.53-.221.293-.293.294-.766.004-1.057l-4.976-4.976h14.692c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-14.692l4.978-4.979c.289-.289.287-.761-.006-1.054-.147-.147-.339-.221-.53-.221-.191-.001-.38.071-.525.215z"
+                fill-rule="nonzero"
+              />
+            </svg>
+            {{ orderButtonTitle }}
+          </a>
+        </div>
+        <div>
+          <span
+            >کالاهای موجود در سبد شما ثبت و رزرو نشده&zwnj;اند، برای ثبت سفارش
+            مراحل بعدی را تکمیل کنید.</span
+          >
+
+          <i
+            class="help-sn"
+            ngbPopover="محصولات موجود در سبد خرید شما تنها در صورت ثبت و پرداخت سفارش برای شما رزرو می&zwnj;شوند. در صورت عدم ثبت سفارش، فروشگاه ما هیچگونه مسئولیتی در قبال تغییر قیمت یا موجودی این کالاها ندارد.        "
+            placement="bottom"
+            triggers="mouseenter:mouseleave"
+          >
+            <i class="fa fa-exclamation-circle"></i>
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+}

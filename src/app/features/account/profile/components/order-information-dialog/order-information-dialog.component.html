@@ -1,0 +1,67 @@
+
+<div class="header col-12">
+  <h5 class="m-0">اطلاعات سفارش</h5>
+  <i
+    class="fa fa-close text-secondary"
+    (click)="activeModal.close(false)"
+    [ngbTooltip]="'بستن'"
+  ></i>
+</div>
+
+<div class="row main">
+  <div class="col-4">
+    <p class="label-inp">نام محصول</p>
+    <input type="text" class="inp" readonly [value]="data.productTitle" dir="rtl"  data-toggle="tooltip" data-placement="right" [title]="data.productTitle">
+  </div>
+
+
+  <div class="col-4">
+    <p class="label-inp">تعداد</p>
+    <input type="text" readonly class="inp" [value]="data.count">
+  </div>
+
+  <div class="col-4">
+    <p class="label-inp">قیمت نهایی</p>
+    <input type="text" readonly class="inp" [value]="data.lastAmount">
+  </div>
+
+  <div class="col-4">
+    <p class="mt-4 label-inp" >وضعیت ارسال</p>
+    <input type="text" readonly class="inp" [value]="data.sendStatus | sendStatus">
+  </div>
+
+  @if (data.sendStatus !== InvoiceItemStatusEnum.underReview && data.sendStatus !== InvoiceItemStatusEnum.lackOfSupply){
+    <div class="col-4">
+      <p  class="mt-4 label-inp" >نوع ارسال</p>
+      <input type="text" readonly class="inp"  [value]="data.deliveryType | enumLabel: invoiceItemDeliveryLabel">
+    </div>
+
+
+    @if(data.deliveryType !== IInvoiceItemDeliveryEnum.Post) {
+
+      <div class="col-4">
+        <p  class="mt-4 label-inp" >کد تحویل</p>
+        <input type="text" readonly class="inp"  [value]="data.deliveryCode">
+      </div>
+
+      <div class="col-4">
+        <p  class="mt-4 label-inp">بازه ارسال</p>
+        <input type="text" readonly class="inp" [value]="data.deliveryTime">
+      </div>
+
+      <div class="col-4">
+        <p  class="mt-4 label-inp">تاریخ ارسال</p>
+        <input type="text" readonly class="inp" [value]="data.deliveryDate | persianDate">
+      </div>
+    }
+
+    @if ((data.sendStatus == InvoiceItemStatusEnum.sent || data.sendStatus == InvoiceItemStatusEnum.delivered)
+    && data.deliveryType !== IInvoiceItemDeliveryEnum.SendByCourier){
+      <div class="col-4">
+        <p  class="mt-4 label-inp">کد مرسوله</p>
+        <input type="text" readonly class="inp" [value]="data.shipmentNumber">
+      </div>
+    }
+  }
+
+</div>

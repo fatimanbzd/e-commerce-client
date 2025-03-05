@@ -1,0 +1,186 @@
+@if (data) {
+  <div class="profile-navbar col-12 d-flex">
+    <h4>
+      شماره سفارش
+      <span>{{ data.invoiceNumber }}</span>
+      <span>ثبت شده در تاریخ {{ data.invoiceRegisterDate | persianDate }}</span>
+    </h4>
+  </div>
+
+  <div class="col-12 mb-4">
+    <div class="box-information">
+      <div class="row table-draught px-3">
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">تحویل گیرنده:</span>
+          <span class="value">{{ data.recipientFullName }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">شماره تماس تحویل گیرنده:</span>
+          <span class="value">{{ data.recipientMobileNumber }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">هزینه ارسال:</span>
+          <span class="value">-</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">شماره ثابت:</span>
+          <span class="value">{{
+            data.recipientPhoneNumber ? data.recipientPhoneNumber : "-"
+          }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">آدرس :</span>
+          <span class="value">{{ data.recipientAddress }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">کد پستی:</span>
+          <span class="value">{{ data.recipientPostalCode }}</span>
+        </div>
+        <div class="col-12 p-3 box-detail">
+          <span class="title">توضیحات سفارش:</span>
+          <span class="value">{{
+            data.invoiceDescription ? data.invoiceDescription : "-"
+          }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">وضعیت سفارش:</span>
+          <span class="value">{{
+            data.invoiceState | enumLabel: InvoiceStatusLabel
+          }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">جمع تخفیف:</span>
+          <span class="value">{{
+            data.discountAmount ? data.discountAmount + "ريال" : "-"
+          }}</span>
+        </div>
+        <div class="col-md-6 col-12 p-3 box-detail">
+          <span class="title">قیمت کل</span>
+          <span class="value">{{ data.invoiceTotalAmount | price }} ريال</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>جزییات سفارش</h2>
+  </div>
+
+  <div class="dt-sl">
+    <div class="table-responsive">
+      <table class="table table-order mb-0">
+        <thead class="title-table">
+          <tr>
+            <th class="title-table" style="width: 32px">#</th>
+            <th class="title-table" style="width: 252px">نام محصول</th>
+            <th class="title-table" style="width: 54px">تعداد</th>
+            <th class="title-table" style="width: 115px">قیمت واحد</th>
+            <th class="title-table" style="width: 114px">قیمت کل</th>
+            <th class="title-table" style="width: 66px">تخفیف</th>
+            <th class="title-table" style="width: 117px">قیمت نهایی</th>
+            <th class="title-table" style="width: 110px">وضعیت ارسال</th>
+            <th class="title-table" style="width: 88px">عملیات</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of data.items; track $index) {
+            <tr class="content">
+              <td>{{ $index + 1 }}</td>
+
+              <td>
+                <a [routerLink]="[ '/pages/content/products',   item.productId, item.productTitle, ]" target="_blank">
+
+
+                <div class="details-product-area">
+                  <div class="img-box">
+                    <img
+                      [src]="item.imageSrc | fullSrc"
+                      alt="{{ item.productTitle }}"
+                    />
+                  </div>
+
+                  <h5 class="details-product">
+                    <span class="productTitle">{{ item.productTitle }}</span>
+                    <span class="productTitle"
+                      >گارانتی:
+                      {{
+                        item.productGuaranty | enumLabel: ProductGuarantyLabel
+                      }}</span
+                    >
+                    <span
+                      [ngStyle]="{
+                        'background-color': item.productPriceColorData,
+                      }"
+                      class="order-product-color"
+                    ></span>
+                    <span class="productTitle"
+                      >رنگ: {{ item.productPriceColorName }}</span
+                    >
+                    <span class="productTitle"
+                      >پذیرنده: {{ item.productVendorTitle }}</span
+                    >
+                  </h5>
+                </div>
+                </a>
+              </td>
+
+              <td>{{ item.count }}</td>
+              <td>{{ item.price | price }} ريال</td>
+              <td>{{ item.price * item.count | price }} ريال</td>
+              <td>
+                {{
+                  item.productDiscountAmount
+                    ? item.productDiscountAmount + "ریال"
+                    : "-"
+                }}
+              </td>
+              <td>{{ item.lastAmount | price }} ريال</td>
+              <td>{{ item.sendStatus | sendStatus }}</td>
+              <td>
+                <a class="view" (click)="openOrder(item.invoiceItemId)">مشاهده</a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title-paid">
+      <h2>جزییات پرداخت</h2>
+    </div>
+
+    <div class="checkout-details">
+      @if (data.transactions.length > 0) {
+        <div class="table-responsive">
+          <table class="checkout-orders-table">
+            <thead>
+              <tr class="header-table">
+                <th>ردیف</th>
+                <th>شماره تراکنش</th>
+                <th>تاریخ</th>
+                <th>مبلغ</th>
+                <th>وضعیت</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (data of data.transactions; track $index) {
+                <tr class="record">
+                  <td>{{ $index + 1 }}</td>
+                  <td>-</td>
+                  <td>{{ data.createDate | persianDateTime }}</td>
+                  <td>{{ data.totalAmount | price }} ريال</td>
+                  <td>
+                    {{ data.state | enumLabel: InvoiceTransactionStateLabel }}
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <p class="no-transactions-text">هیچ تراکنشی انجام نشده است.</p>
+      }
+    </div>
+  </div>
+}

@@ -1,0 +1,128 @@
+.search-box {
+  .search-container {
+    .input-group-text {
+      border-left: unset;
+      border-bottom-left-radius: 12px !important;
+      border-top-left-radius: 12px !important;
+      cursor: pointer;
+      background-color: #8fd9c7;
+      color: #efefef;
+
+      &:hover {
+        background-color: #00d1a1;
+        color: white;
+      }
+    }
+
+    input.form-control {
+      border-left: unset;
+      border-bottom-right-radius: 12px !important;
+      border-top-right-radius: 12px !important;
+      font-size: 14px;
+      background-color: #fafdfb;
+      border-color: #f3f3f3;
+      color: #474747;
+      font-weight: 300;
+
+      &:focus {
+        box-shadow: unset;
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      display: block;
+      top: 100%;
+      right: 0;
+      z-index: 1000;
+      float: right;
+      min-width: 10rem;
+      padding: 0.5rem 0;
+      margin: 0.125rem 0 0;
+      font-size: 1rem;
+      color: #212529;
+      text-align: right;
+      list-style: none;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 0.25rem;
+      width: 100%;
+
+      .dropdown-item {
+        &:active {
+          background: #dcdce4;
+        }
+
+        &:hover {
+          background: #dcdce4;
+        }
+      }
+    }
+
+    .search-result {
+      .img-index {
+        display: block;
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .search-result-text {
+        max-width: 75%;
+        line-height: 1.7;
+        flex-grow: 1;
+        color: #212121;
+        display: block;
+        padding: 2px 15px;
+
+        .search-result-body {
+          text-align: justify;
+          padding-left: 20px;
+
+          p {
+            color: #212121;
+            display: block;
+            padding: 2px 0;
+            text-align: justify;
+            white-space: normal;
+            overflow-wrap: break-word;
+          }
+
+          .text-muted {
+            color: #6c757d !important;
+            font-size: 13px;
+          }
+        }
+      }
+
+      .box-search-price {
+        max-width: 25%;
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+
+        a {
+          color: #212121;
+
+          .search-icon {
+            background: var(--primary-color) !important;
+            transition: 0.2s;
+            font-size: 15px;
+            width: 34px;
+            color: #fff;
+            padding: 8px;
+            border-radius: 3px;
+          }
+        }
+      }
+
+      .empty-result {
+        padding: 1rem .5rem;
+        color: #898a8d;
+      }
+    }
+  }
+}

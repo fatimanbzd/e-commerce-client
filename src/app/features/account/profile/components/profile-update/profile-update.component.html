@@ -1,0 +1,94 @@
+<div class="col-lg-12">
+  <div class="px-3">
+    <form [formGroup]="form">
+      <div class="row mb-2">
+        <div class="col">
+          <label class="form-label required">نام</label>
+          <input
+            type="text"
+            class="form-control"
+            required="true"
+            formControlName="name"
+          />
+          <span
+            class="error"
+            [style.visibility]="
+              form.get('name')?.touched && form.get('name')?.invalid
+                ? 'visible'
+                : 'hidden'
+            "
+            >نام الزامیست</span
+          >
+        </div>
+        <div class="col">
+          <label class="form-label required">نام خانوادگی</label>
+          <input
+            type="text"
+            class="form-control"
+            required
+            formControlName="family"
+          />
+          <span
+            class="error"
+            [style.visibility]="
+              form.get('family')?.touched && form.get('family')?.invalid
+                ? 'visible'
+                : 'hidden'
+            "
+          >
+            نام خانوادگی الزامیست
+          </span>
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col">
+          <label class="form-label">شماره موبایل </label>
+          <input
+            type="text"
+            class="form-control"
+            [value]="form.controls['mobileNumber'].value"
+            disabled
+          />
+        </div>
+        <div class="col">
+          <label class="form-label required">کد ملی</label>
+          <input
+            type="text"
+            class="form-control"
+            maxlength="10"
+            minlength="10"
+            numbersOnly
+            formControlName="nationalNumber"
+          />
+          <span
+            class="error"
+            [style.visibility]="
+              form.get('nationalNumber')?.touched &&
+              form.get('nationalNumber')?.invalid
+                ? 'visible'
+                : 'hidden'
+            "
+          >
+            کد ملی الزامیست</span
+          >
+        </div>
+      </div>
+      <!--  <div class="row ">-->
+      <!--    <div class="col text-center">-->
+      <!--      <button type="button"-->
+      <!--              class="btn btn-qLand-primary"-->
+      <!--              [disabled]="form.invalid"-->
+      <!--              (click)="update()">-->
+      <!--        ذخیره تغییرات-->
+      <!--      </button>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <div class="row g-3 justify-content-center">
+        <div class="box-login-button">
+          <i class="fa fa-user-circle icon-login"></i>
+          <button class="login-button" (click)="update()">ذخیره تغییرات</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

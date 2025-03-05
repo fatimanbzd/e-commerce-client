@@ -1,0 +1,60 @@
+<div class="search-box form-group">
+  <div class="input-group mt-1 search-container">
+    <input
+      type="search"
+      class="form-control autocomplete"
+      placeholder="نام کالا را جستجو کنید…"
+      (input)="suggestProducts($event)"
+      [(ngModel)]="searchQuery"
+      aria-label="search"
+      aria-describedby="button-addon"
+    />
+    <span class="input-group-text" title="جستجو">
+      <i class="fa fa-search"></i>
+    </span>
+
+    @if (suggestionProductList.length) {
+      <div class="dropdown-menu search-result">
+        @for (product of suggestionProductList; track product) {
+          <a
+            class="dropdown-item"
+            [routerLink]="[
+              '/pages/content/products',
+              product.id,
+              product.title,
+            ]"
+          >
+            <div class="d-flex justify-content-around">
+              <div
+                class="img-index align-content-center"
+                style="max-width: 10%"
+              >
+                <img
+                  src="{{ product.imageSrc | fullSrc }}"
+                  alt="{{ product.title }}"
+                />
+              </div>
+              <div class="search-result-text">
+                <div class="search-result-body">
+                  <p style="margin-bottom: 0">{{ product.title }}</p>
+                  <span class="text-muted"
+                    >{{ product.productCategoryName }}&zwnj;</span
+                  >
+                </div>
+              </div>
+              <div class="box-search-price">
+                <span class="ml-3">{{ product.price | price }} ريال </span>
+                <a class="d-flex align-items-center">
+                  <i
+                    class="fa fa-eye search-icon"
+                    (click)="goToDetailProduct(product.id, product.title)"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </a>
+        }
+      </div>
+    }
+  </div>
+</div>

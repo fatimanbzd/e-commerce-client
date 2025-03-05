@@ -1,0 +1,25 @@
+.modal-body {
+  p {
+    padding: 2rem;
+    font-size: larger;
+    text-align: center;
+    font-weight: bolder;
+    color: #066c18;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.modal-footer {
+  a.btn-link {
+    text-decoration: none;
+    color: #1b1e1f;
+    border: 1px solid #a1a4a5;
+    &:hover {
+      border-color: var(--btn-primary-color);
+      color: var(--btn-primary-color);
+    }
+  }
+}

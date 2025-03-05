@@ -1,0 +1,26 @@
+<div class="sidebar-logo">
+  <a href="/" target="_blank">
+    <img src="assets/images/qland_logo.png" alt="logo" *ngIf="!isCollapsed" />
+    <img src="assets/images/qland_mini.png" alt="logo" *ngIf="isCollapsed" />
+  </a>
+</div>
+<ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+  @for (menu of menuList; track $index) {
+    @if (menu.children) {
+      <li nz-submenu nzOpen nzTitle="{{ menu.label }}" nzIcon="{{ menu.icon }}">
+        <ul>
+          @for (child of menu.children; track $index) {
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="{{ child.route }}">{{ child.label }}</a>
+            </li>
+          }
+        </ul>
+      </li>
+    } @else {
+      <li nz-menu-item nzMatchRouter>
+        <span nz-icon nzType="{{ menu.icon }}"></span>
+        <span routerLink="{{ menu.route }}">{{ menu.label }} </span>
+      </li>
+    }
+  }
+</ul>

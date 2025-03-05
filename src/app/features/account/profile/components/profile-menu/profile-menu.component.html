@@ -1,0 +1,24 @@
+<div class="account">
+  <div class="title-account">
+    <span>حساب کاربری شما</span>
+  </div>
+
+  <div class="account-menu">
+    @for (item of listItem; track $index) {
+      <ul class="list-account-menu">
+        <li>
+          <a
+            class="item-account-menu profile"
+            routerLink="{{ item.router }}"
+            [ngClass]="{
+              active:
+                item.router === router.url.replace('/pages/dashboard/', ''),
+            }"
+          >
+            <i class="fa {{ item.icon }} icon"></i> {{ item.title }}</a
+          >
+        </li>
+      </ul>
+    }
+  </div>
+</div>

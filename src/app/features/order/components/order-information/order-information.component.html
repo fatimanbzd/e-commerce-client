@@ -1,0 +1,375 @@
+<div class="row mb-3">
+  <div class="col-12">
+    <h2 class="title-address">انتخاب آدرس تحویل سفارش</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="py-4 mx-5 box">
+      <div class="row" style="padding: 0 18px">
+        <div class="col-12">
+          <div
+            class="btn-group mb-3"
+            role="group"
+            aria-label="Basic radio toggle button group"
+          >
+            @for (owner of ownerList; track $index) {
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnRadioOwner"
+                id="{{ owner.name }}"
+                autocomplete="off"
+                [value]="owner.value"
+                [ngModel]="ownerSelected"
+                (ngModelChange)="changeGetter(owner.value)"
+              />
+              <label class="btn btn-outline-primary" for="{{ owner.name }}">{{
+                owner.title
+              }}</label>
+            }
+          </div>
+        </div>
+
+        <form [formGroup]="form" class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label required">نام </label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="نام خود را وارد نمایید"
+                formControlName="name"
+              />
+              <small
+                [ngClass]="
+                  (form.controls['name'].dirty || form.get('name')?.touched) &&
+                  form.controls['name'].invalid
+                    ? 'visible'
+                    : 'hidden'
+                "
+                class="error text-danger mb-0"
+              >
+                نام الزامیست !</small
+              >
+            </div>
+
+            <div class="col-6">
+              <label class="form-label required">نام خانوادگی </label>
+              <div class="form-row">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="نام خانوادگی خود را وارد نمایید"
+                  formControlName="family"
+                />
+                <small
+                  [ngClass]="
+                    (form.controls['family'].dirty ||
+                      form.get('family')?.touched) &&
+                    form.controls['family'].invalid
+                      ? 'visible'
+                      : 'hidden'
+                  "
+                  class="error text-danger mb-0"
+                >
+                  نام خانوادگی الزامیست !</small
+                >
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label class="form-label required"> شماره موبایل گیرنده </label>
+              <input
+                type="text"
+                placeholder="09xxxxxxx"
+                numbersOnly
+                class="form-control ltr"
+                formControlName="mobileNumber"
+                maxlength="11"
+              />
+              <small
+                [ngClass]="
+                  (form.controls['mobileNumber'].dirty ||
+                    form.get('mobileNumber')?.touched) &&
+                  form.controls['mobileNumber'].invalid
+                    ? 'visible'
+                    : 'hidden'
+                "
+                class="error text-danger mb-0"
+              >
+                شماره موبایل الزامیست !</small
+              >
+            </div>
+
+            <div class="col-6">
+              <label class="form-label">تلفن ثابت</label>
+              <input
+                type="text"
+                placeholder="021-xxxxxxx"
+                numbersOnly
+                formControlName="phoneNumber"
+                class="form-control ltr"
+                maxlength="11"
+              />
+            </div>
+
+            <div class="col-6">
+              <label class="form-label required">کدملی گیرنده </label>
+              <input
+                type="text"
+                numbersOnly
+                class="form-control ltr"
+                placeholder="کدملی گیرنده"
+                formControlName="nationalNumber"
+                maxlength="10"
+              />
+              <small
+                [ngClass]="
+                  (form.controls['nationalNumber'].dirty ||
+                    form.get('nationalNumber')?.touched) &&
+                  form.controls['nationalNumber'].invalid
+                    ? 'visible'
+                    : 'hidden'
+                "
+                class="error text-danger mb-0"
+              >
+                کدملی الزامیست !</small
+              >
+            </div>
+
+            <div class="col-6">
+              <div class="form-row-title">
+                <span
+                  >انتخاب آدرس
+                  <a class="choose-address" (click)="openAddModel()"
+                    ><small>( برای ایجاد آدرس جدید کلیک کنید )</small></a
+                  >
+                  <sup class="text-danger">*</sup></span
+                >
+              </div>
+              <div class="form-row">
+                <select
+                  class="form-control"
+                  formControlName="locationId"
+                  (change)="getAddress(form.controls['locationId'].value)"
+                >
+                  <option [value]="null">برای انتخاب آدرس کلیک کنید...</option>
+                  @for (loc of locationList; track $index) {
+                    <option [value]="loc.id">{{ loc.title }}</option>
+                  }
+                </select>
+                <small
+                  [ngClass]="
+                    (form.controls['locationId'].dirty ||
+                      form.get('locationId')?.touched) &&
+                    form.controls['locationId'].invalid
+                      ? 'visible'
+                      : 'hidden'
+                  "
+                  class="error text-danger mb-0"
+                >
+                  انتخاب آدرس الزامیست !</small
+                >
+              </div>
+            </div>
+
+            @if (form.controls["locationId"].value != null) {
+              <div class="col-12">
+                <!--      جزییات آدرس-->
+                <form [formGroup]="formAddress" class="row">
+                  <div class="col-6 mb-2">
+                    <label class="form-label required"> استان </label>
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="provinceTitle"
+                    />
+                  </div>
+
+                  <div class="col-6 mb-2">
+                    <label class="form-label">شهر</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="cityTitle"
+                    />
+                  </div>
+
+                  <div class="col-6 mb-2">
+                    <label class="form-label">کدپستی </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="postalCode"
+                    />
+                  </div>
+
+                  <div class="col-12 mb-2">
+                    <label class="form-label required">آدرس </label>
+                    <textarea
+                      class="form-control textArea-address"
+                      formControlName="address"
+                    ></textarea>
+                  </div>
+                </form>
+              </div>
+            }
+
+            <div class="col-12 mb-2">
+              <label class="form-label">توضیحات سفارش</label>
+              <textarea
+                type="text"
+                class="form-control"
+                formControlName="description"
+                maxlength="500"
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
+    <h2 class="title-address">اطلاعات سفارش</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="send-type-box py-3 mx-5">
+      @for (vendor of groupedItems; track $index) {
+        <div class="checkout-time-table">
+          <p class="vendor-title">{{ vendor.key }}</p>
+          <div class="container">
+            @for (item of vendor.sendTypeItems; track $index) {
+              @for (product of item.products; track $index) {
+                <div class="row my-4">
+                  <div class="col-3 product-img-box">
+                    <img
+                      [src]="product.imageSrc | fullSrc"
+                      alt="{{ product.productPersianTitle }}"
+                    />
+                  </div>
+                  <div class="col-9">
+                    <p class="product-title">
+                      {{ product.productPersianTitle }}
+                    </p>
+                    <small class="product-detail-text">
+                      رنگ : {{ product.colorName }}
+                      ، تامین کننده : {{ product.vendorDisplayName }}
+                    </small>
+                  </div>
+                </div>
+              }
+            }
+          </div>
+
+          @if ($index < groupedItems.length - 1) {
+            <hr class="vendor-separator" />
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
+    <h2 class="title-address">انتخاب شیوه پرداخت</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="payment-method py-3 mx-5">
+      <div class="checkout-time-table">
+        <div class="row my-3 mt-4">
+          <div class="col-12 pr-5 row-radio">
+            <input type="radio" checked />
+            <svg
+              fill="#000000"
+              height="20px"
+              width="20px"
+              viewBox="0 0 512 512"
+            >
+              <g>
+                <g>
+                  <path
+                    d="M500.364,256c-6.982,0-11.636,4.655-11.636,11.636v139.636c0,5.818-2.327,11.636-6.982,16.291s-10.473,6.982-16.291,6.982
+			H46.545c-12.8,0-23.273-10.473-23.273-23.273V162.909h430.545c6.982,0,11.636-4.655,11.636-11.636
+			c0-6.982-4.655-11.636-11.636-11.636H11.636C4.655,139.636,0,144.291,0,151.273v256c0,25.6,20.945,46.545,46.545,46.545h418.909
+			c12.8,0,24.436-4.655,32.582-13.964c9.309-9.309,13.964-20.945,13.964-32.582V267.636C512,260.655,507.345,256,500.364,256z"
+                  />
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path
+                    d="M139.636,360.727H58.182c-6.982,0-11.636,4.655-11.636,11.636S51.2,384,58.182,384h81.455
+			c6.982,0,11.636-4.655,11.636-11.636S146.618,360.727,139.636,360.727z"
+                  />
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path
+                    d="M232.727,360.727h-46.545c-6.982,0-11.636,4.655-11.636,11.636S179.2,384,186.182,384h46.545
+			c6.982,0,11.636-4.655,11.636-11.636S239.709,360.727,232.727,360.727z"
+                  />
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path
+                    d="M453.818,360.727h-46.545c-6.982,0-11.636,4.655-11.636,11.636S400.291,384,407.273,384h46.545
+			c6.982,0,11.636-4.655,11.636-11.636S460.8,360.727,453.818,360.727z"
+                  />
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path
+                    d="M465.455,58.182H46.545C20.945,58.182,0,79.127,0,104.727c0,6.982,4.655,11.636,11.636,11.636s11.636-4.655,11.636-11.636
+			c0-12.8,10.473-23.273,23.273-23.273h418.909c12.8,0,23.273,10.473,23.273,23.273v104.727H58.182
+			c-6.982,0-11.636,4.655-11.636,11.636c0,6.982,4.655,11.636,11.636,11.636h442.182c6.982,0,11.636-4.655,11.636-11.636V104.727
+			C512,79.127,491.055,58.182,465.455,58.182z"
+                  />
+                </g>
+              </g>
+            </svg>
+            <span>پرداخت از کیف پول اعتباری</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="payment-method py-3 mx-5 mt-4">
+      <div class="checkout-time-table">
+        <div class="row my-3 mt-4">
+          <h2 class="title-address">کد تخفیف دارید؟</h2>
+          <div class="row p-0">
+            <div class="col-6 pr-5 row-radio">
+              <input
+                type="text"
+                class="discount-inp"
+                placeholder="کد تخفیف را اینجا وارد کنید"
+              />
+            </div>
+            <div class="col-6">
+              <button class="discount-btn">ثبت کد تخفیف</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

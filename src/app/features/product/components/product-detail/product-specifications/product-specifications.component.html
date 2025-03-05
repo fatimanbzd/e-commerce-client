@@ -1,0 +1,35 @@
+<div class="row main">
+  <div class="col-12 p-0">
+    @if (productSpecifications ? productSpecifications.length > 0 : null) {
+      <h2 class="technical-specifications-text">مشخصات فنی</h2>
+    } @else {
+      <h2 class="text">مشخصاتی برای این محصول ثبت نشده است.</h2>
+    }
+  </div>
+
+  @for (data of productSpecifications; track data) {
+    <div class="col-12 p-0 box-group-name">
+      <svg
+        fill="#00bfd6"
+        height="10px"
+        width="10px"
+        viewBox="0 0 330.002 330.002"
+      >
+        <path
+          id="XMLID_19_"
+          d="M229.966,0.847c-6.011-2.109-12.698-0.19-16.678,4.784L93.288,155.635
+	c-4.382,5.478-4.382,13.263,0.001,18.741l120,149.996c2.902,3.628,7.245,5.63,11.716,5.63c1.658,0,3.336-0.276,4.962-0.847
+	c6.012-2.108,10.035-7.784,10.035-14.154v-300C240.001,8.63,235.978,2.955,229.966,0.847z"
+        />
+      </svg>
+      <h3 class="group-name">{{ data.groupName }}</h3>
+    </div>
+
+    @for (spec of data.specifications; track spec) {
+      <div class="row-key-value row">
+        <div class="key">{{ spec.key }}</div>
+        <div class="value">{{ spec.value }}</div>
+      </div>
+    }
+  }
+</div>

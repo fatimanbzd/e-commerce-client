@@ -1,0 +1,134 @@
+@if (cart && cart.cartItems && cart.cartItems.length) {
+  <div class="row">
+    <div class="col-md-12 px-0">
+      <div class="table-responsive checkout-content dt-sl">
+        <div class="checkout-header checkout-header--express">
+          <i class="fa fa-truck" aria-hidden="true"></i>
+          <span class="checkout-header-title"
+            >({{ cart.cartItems.length }} کالا/خدمت )</span
+          >
+          <div class="mr-2">
+            <button
+              type="button"
+              class="delete-all-btn btn btn-danger"
+              (click)="emptyCart()"
+            >
+              می خواهید سبد خرید به طور کامل حذف شود؟
+            </button>
+          </div>
+        </div>
+
+        <div class="container-fluid shop-list">
+          @if (cart.cartItems.length) {
+            @for (cart of cart.cartItems; track cart) {
+              <div class="row list-row">
+                <div class="col-4 col-sm-3 col-md-2">
+                  <a
+                    [routerLink]="[
+                      '/pages/content/products',
+                      cart.productId,
+                      cart.productPersianTitle,
+                    ]"
+                  >
+                    <img
+                      class="img-fluid p-2"
+                      src="{{ cart.imageSrc | fullSrc }}"
+                      alt="{{ cart.productPersianTitle }}"
+                    />
+                  </a>
+                </div>
+                <div class="col-8 col-sm-9 col-md-5 card-product-name">
+                  <a
+                    [routerLink]="[
+                      '/pages/content/products',
+                      cart.productId,
+                      cart.productPersianTitle,
+                    ]"
+                  >
+                    <h3 class="title">
+                      {{ cart.productPersianTitle }}
+                    </h3>
+                  </a>
+
+                  <p class="detail">رنگ : {{ cart.colorName }}</p>
+                  <p class="detail">
+                    گارانتی :
+                    {{ cart.productGuaranty | enumLabel: ProductGuarantyLabel }}
+                  </p>
+                  <p class="detail">پذیرنده : {{ cart.vendorDisplayName }}</p>
+                </div>
+                <div
+                  class="col-4 col-sm-3 col-md-2 d-flex justify-content-center"
+                >
+                  <div class="counter-box">
+                    <button
+                      type="button"
+                      class="inc"
+                      [disabled]="cart.count === cart.highestNumberOfOrders"
+                      (click)="changeTheProductCount(true, cart)"
+                    >
+                      <i class="fa fa-plus"></i>
+                    </button>
+                    <span
+                      class="d-flex justify-content-center quantity cart_quantity count"
+                      >{{ cart.count }}
+                    </span>
+                    <button
+                      type="button"
+                      class="dec"
+                      (click)="openRemoveProductModel(cart, cart.count)"
+                    >
+                      @if (cart.count === cart.lowestNumberOfOrders) {
+                        <i class="fa fa-trash" style="margin-left: 0"></i>
+                      } @else {
+                        <i class="fa fa-minus"></i>
+                      }
+                    </button>
+                  </div>
+                </div>
+                <div class="col-8 col-sm-9 col-md-3">
+                  <div style="position: relative">
+                  @if (cart.discountAmount) {
+                    <div class="text-start ltr discount">
+                      <span class="amount-discount" dir="rtl"> {{ cart.discountAmount | price}} ريال </span></div>
+                  }
+                  <strong class="cart-product-price"
+                    ><span class="currency-suffix"></span>
+                    {{ cart.lastAmount * cart.count | price }}
+                    <span class="currency-suffix"> ريال</span></strong
+                  >
+                    </div>
+                </div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 mb-2 p-md-0">
+      <div class="text-end">
+        <button
+          id="update-cart"
+          type="button"
+          class="btn btn-light"
+          (click)="getCarts()"
+        >
+          بروزرسانی سبد خرید
+        </button>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="cart-empty">
+    <div class="container d-flex flex-column justify-content-lg-center">
+      <div style="width: 200px; height: 180px; margin: 0 auto">
+        <img
+          src="assets/images/emptyCart.png"
+          class="img-fluid"
+          alt="سبد خالی"
+        />
+      </div>
+      <p>سبد خرید شما خالی است !</p>
+    </div>
+  </div>
+}

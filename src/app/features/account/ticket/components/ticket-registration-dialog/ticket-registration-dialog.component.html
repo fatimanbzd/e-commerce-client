@@ -1,0 +1,138 @@
+<div class="header col-12">
+  <h5 class="m-0">ثبت تیکت جدید</h5>
+  <i
+    class="fa fa-close text-secondary"
+    (click)="activeModal.close(false)"
+    [ngbTooltip]="'بستن'"
+  ></i>
+</div>
+
+<form id="profile-form"
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+      class="setting_form p-1">
+
+  <div class="row p-0 m-0">
+
+<!--    موضوع-->
+    <div class="col-lg-6 mt-4">
+      <div class="form-row-title">
+        <label class="form-label required">موضوع</label>
+      </div>
+      <div class="form-row form-group">
+        <div class="custom-select-ui">
+          <input
+            type="text"
+            maxlength="100"
+            class="input-ui pr-2 box-input form-control"
+            formControlName="title"
+            [ngClass]="{
+              'is-valid': submitted && form.controls['title'].valid,
+              'is-invalid': submitted && form.controls['title'].invalid,
+            }"
+          />
+          <div class="invalid-feedback">
+
+          <span
+            class="error"
+            [style.visibility]="
+              form.get('title')?.invalid &&
+              (form.controls['title'].dirty || submitted) ? 'visible'  : 'hidden' ">
+            موضوع الزامیست
+          </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!--    الویت-->
+    <div class="col-lg-6 mt-4">
+      <div class="form-row-title">
+        <label class="form-label">الویت</label>
+      </div>
+      <div class="form-row form-group">
+        <div class="custom-select-ui">
+          <select
+            class="box-input form-control"
+            formControlName="priority">
+            @for (priority of PriorityTicketList; track priority) {
+              <option [label]="priority.name" [value]="priority.value">{{ priority }}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+<!--پیام-->
+    <div class="col-lg-12 mt-4">
+      <div class="form-label">
+        <label class="form-label required">پیام</label>
+      </div>
+      <div class="form-row form-group">
+        <textarea
+          name="body"
+          [maxLength]="500"
+          class="input-ui pr-2 text-right box-address-input form-control"
+          formControlName="body"
+          maxlength="500"
+          [ngClass]="{
+            'is-valid': submitted && form.controls['body'].valid,
+            'is-invalid': submitted && form.controls['body'].invalid,
+          }"
+        ></textarea>
+        <div class="invalid-feedback">
+
+        <span
+          class="error"
+          [style.visibility]="
+            (submitted || form.get('body')?.dirty) &&
+            form.controls['body'].invalid ? 'visible' : 'hidden'" >
+          پیام الزامیست
+        </span>
+        </div>
+      </div>
+    </div>
+
+<!--فایل پیوست-->
+    <div class="col-lg-12 mt-4">
+      <div class="form-row-title">
+        <label class="form-label">فایل پیوست</label>
+      </div>
+      <div class="form-row form-group">
+        <div class="custom-select-ui">
+          <input class="form-control"
+                 formControlName="file"
+                 type="file"
+                 (change)="onFileSelected($event)"
+          >
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <hr/>
+
+  <div class="form-row mt-3 footer-modal">
+    <button
+      type="button"
+      class="btn btn-danger btn-with-icon ml-2"
+      (click)="activeModal.close(false)"
+    >بستن
+    </button>
+
+    <button
+      id="submit-btn"
+      type="submit"
+      class="btn btn-success btn-with-icon ml-2"
+    >ثبت
+    </button>
+  </div>
+
+</form>
+
+
+

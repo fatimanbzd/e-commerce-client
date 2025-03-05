@@ -1,0 +1,50 @@
+<div class="dt-sl">
+  @if (ticketLis.length > 0) {
+    <div class="table-responsive">
+      <table class="table   mb-0">
+        <thead class="title-table">
+        <tr>
+          <th class="title-table">#</th>
+          <th class="title-table">شماره تیکت</th>
+          <th class="title-table">موضوع</th>
+          <th class="title-table">تاریخ ثبت تیکت</th>
+          <th class="title-table">الویت</th>
+          <th class="title-table">وضعیت</th>
+          <th class="title-table">جزییات</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (item of ticketLis; track $index) {
+            <tr>
+              <td>{{ $index +1 }}</td>
+              <td class=" ticket-number">{{ item.ticketId }}</td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.createDate | persianDateTime}}</td>
+              <td>{{ item.priority  | enumLabel: PriorityTicketLabel}}</td>
+              <td>{{ item.status  | enumLabel: ticketStatusLabel}}</td>
+
+              <td class="row-table">
+                <svg
+                  class="go-to-stream-icon"
+                  fill="#dadada"
+                  height="35px"
+                  width="35px"
+                  (click)="goToTicketDetails(item)"
+                  viewBox="0 0 330 330"
+                >
+                  <path
+                    d="M315,0H15C6.716,0,0,6.716,0,15v300c0,8.284,6.716,15,15,15h300c8.284,0,15-6.716,15-15V15C330,6.716,323.284,0,315,0z M215.606,234.394c5.858,5.857,5.858,15.355,0,21.213C212.678,258.535,208.839,260,205,260s-7.678-1.464-10.606-4.394l-80-79.998c-2.813-2.813-4.394-6.628-4.394-10.606c0-3.978,1.58-7.794,4.394-10.607l80-80.002c5.857-5.858,15.355-5.858,21.213,0c5.858,5.857,5.858,15.355,0,21.213l-69.393,69.396L215.606,234.394z"
+                  />
+                </svg>
+              </td>
+
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <p class="no-ticket">تیکتی ثبت نشده است</p>
+  }
+</div>
+

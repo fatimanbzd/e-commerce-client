@@ -1,0 +1,29 @@
+<div class="wrapper" style="transform: none">
+  <header class="main-header dt-sl position-fixed">
+    <div class="container main-container desktop-header">
+      <app-header class="top-bar dt-sl"></app-header>
+    </div>
+  </header>
+
+  <div
+    class="container"
+    style="
+      margin-top: 80px;
+      max-width: 1440px !important;
+      width: 90% !important;
+      transform: none;
+      min-height: 52vh;
+      position: relative !important;
+    "
+  >
+    <main class="main-content dt-sl mt-4 mb-3" style="transform: none">
+      <div class="container main-container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+
+  <footer class="main-footer dt-sl">
+    <app-footer></app-footer>
+  </footer>
+</div>

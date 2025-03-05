@@ -1,0 +1,103 @@
+<div class="box-verification">
+  <div class="title-code pe-3">
+    <p>
+      کد فعالسازی به شماره
+      <span>&nbsp;{{ mobileVerificationResponse.mobileNumber }} </span> ارسال می
+      شود.
+    </p>
+  </div>
+  <div class="title-box rtl mb-1 p-3">
+    <button
+      type="button"
+      class="btn btn-link btn-qland-link"
+      (click)="changeMobile()"
+    >
+      تغییر شماره همراه <i class="fa fa-pencil"></i>
+    </button>
+
+    <span class="timer-panel ps-4">
+      <i class="fa fa-clock-o icon-timer" aria-hidden="true"></i>
+      {{ displayTimer }}
+    </span>
+  </div>
+
+  <form
+    autocomplete="off"
+    novalidate
+    data-group-name="digits"
+    class="input-field mb-4"
+  >
+    <div class="" #otp>
+      <input
+        type="tel"
+        digitNumber
+        #otpDigit1
+        autofocus
+        placeholder="-"
+        (keyup)="nextDigit($event, otpDigit2, 0, otpDigit1)"
+        name="digit1"
+        maxlength="1"
+        dir="ltr"
+      />
+      <input
+        type="tel"
+        digitNumber
+        #otpDigit2
+        placeholder="-"
+        (keyup)="nextDigit($event, otpDigit3, otpDigit1, otpDigit2)"
+        name="digit2"
+        maxlength="1"
+        dir="ltr"
+      />
+      <input
+        type="tel"
+        digitNumber
+        #otpDigit3
+        placeholder="-"
+        (keyup)="nextDigit($event, otpDigit4, otpDigit2, otpDigit3)"
+        name="digit3"
+        maxlength="1"
+        dir="ltr"
+      />
+      <input
+        type="tel"
+        digitNumber
+        #otpDigit4
+        placeholder="-"
+        (keyup)="nextDigit($event, otpDigit5, otpDigit3, otpDigit4)"
+        name="digit4"
+        maxlength="1"
+        dir="ltr"
+      />
+      <input
+        type="tel"
+        digitNumber
+        #otpDigit5
+        placeholder="-"
+        (keyup)="nextDigit($event, 0, otpDigit4, otpDigit5)"
+        name="digit5"
+        maxlength="1"
+        dir="ltr"
+      />
+    </div>
+  </form>
+
+  <div class="timer-confirmation mt-4 pe-3">
+    <button class="confirmation" [disabled]="!displayBtn" (click)="login()">
+      تایید و ادامه
+    </button>
+  </div>
+
+  @if (loading) {
+    <div class="spinner-container">
+      <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+  }
+  @if (displayResend) {
+    <div class="get-code mt-5 pe-3 text-center">
+      <p>آیا کد را دریافت نکردید؟ <a (click)="otpReSend()">ارسال مجدد</a></p>
+    </div>
+  }
+</div>

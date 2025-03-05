@@ -1,0 +1,57 @@
+<div class="dt-sl">
+  @if (locationList.length > 0) {
+    <div class="table-responsive">
+      <table class="table table-order">
+        <thead class="title-table">
+          <tr>
+            <th class="title-table">پیشفرض</th>
+            <th class="title-table">عنوان</th>
+            <th class="title-table">کد پستی</th>
+            <th class="title-table">آدرس</th>
+            <th class="title-table">استان - شهر</th>
+            <th class="title-table">عملیات</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (loc of locationList; track $index) {
+            <tr>
+              <td>
+                <input
+                  type="radio"
+                  name="isDefault"
+                  [checked]="loc.isDefault"
+                  (change)="setDefault(loc.id)"
+                />
+              </td>
+              <td>{{ loc.title }}</td>
+              <td>{{ loc.postalCode }}</td>
+              <td title="{{ loc.address }}" class="custom-text">
+                {{ loc.address }}
+              </td>
+              <td>{{ loc.provinceTitle }} - {{ loc.cityTitle }}</td>
+              <td class="details-link">
+                <span
+                  (click)="openEditModel(loc.id)"
+                  class="edit-btn"
+                  [ngbTooltip]="'ویرایش'"
+                >
+                  <i class="fa fa-edit"></i>
+                </span>
+
+                <span
+                  (click)="openRemoveModel(loc.id)"
+                  class="delete-btn"
+                  [ngbTooltip]="'حذف'"
+                >
+                  <i class="fa fa-trash"></i>
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <p class="no-address">آدرسی ثبت نشده است</p>
+  }
+</div>

@@ -1,0 +1,33 @@
+<div class="product">
+  <div class="image-container">
+    <img
+      src="{{ productItem.imageSrc | fullSrc }}"
+      alt="{{ productItem.title }}"
+      class="hover-image"
+    />
+  </div>
+  <div class="product-content">
+    <h5>{{ productItem.title }}</h5>
+    <div class="price-color">
+      <div class="product-color">
+        @for (color of uniqueColors; track color) {
+          <div>
+            <div
+              [style.background]="color.id ? color.data : ''"
+              class="color-selection"
+            ></div>
+          </div>
+        }
+      </div>
+
+
+      <span class="product-price">
+        @if (productItem.isExist) {
+          {{ productItem.price | price }} ريال
+        } @else {
+          <strong class="text-danger"> ناموجود </strong>
+        }
+      </span>
+    </div>
+  </div>
+</div>

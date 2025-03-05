@@ -1,0 +1,23 @@
+.title {
+  display: flex;
+  margin: 40px 0 20px 0;
+  justify-content: space-between;
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .view-btn {
+    color: #000;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  h2 {
+    font-size: 14px !important;
+  }
+
+  .view-btn {
+    font-size: 12px;
+  }
+}

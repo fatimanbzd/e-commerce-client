@@ -1,0 +1,37 @@
+<div class="col-lg-6">
+  <div class="px-3">
+    <div class="section-title text-sm-start dt-sl mb-2 title-wide">
+      <h6>اطلاعات شخصی</h6>
+    </div>
+    <div class="profile-section dt-sl">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="label-info">نام</div>
+          <div class="value-info">{{ user?.name }}</div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="label-info">نام خانوادگی</div>
+          <div class="value-info">{{ user?.family }}</div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="label-info">کد ملی</div>
+          <div class="value-info">{{ user?.nationalNumber }}</div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="label-info">شماره همراه</div>
+          <div class="value-info">
+            {{ user?.mobileNumber ? user?.mobileNumber : "-" }}
+          </div>
+        </div>
+      </div>
+      <div class="profile-section-link">
+        <button
+          class="btn border-bottom-dt d-flex justify-content-center align-items-center fw-bold"
+          (click)="goToUpdateUser()"
+        >
+          <i class="fa fa-edit m-2"></i> ویرایش اطلاعات شخصی
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

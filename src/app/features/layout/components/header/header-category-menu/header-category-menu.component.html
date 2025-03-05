@@ -1,0 +1,41 @@
+<div class="dropdown-category">
+  <span class="category">
+    دسته بندی
+    <i class="fa fa-thin fa-chevron-down icon"></i>
+  </span>
+
+  <div class="dropdown-content-category">
+    <div class="general-box">
+      <div class="title">
+        @for (item of dataCategory?.menuItems; track item) {
+          @if (item.parentId == 1) {
+            <div class="drop-sub-menu">
+              <span>{{ item.name }}</span>
+            </div>
+
+            <div class="content-sub-menu">
+              <div class="col-Q">
+                @for (data of dataCategory?.menuItems; track data) {
+                  @if (data.parentId == item.id) {
+                    <span style="font-weight: bold"
+                      >{{ data.name }}
+                      <i class="fa fa-chevron-left icon-data"></i>
+                    </span>
+
+                    @for (levelOne of dataCategory?.menuItems; track levelOne) {
+                      @if (levelOne.parentId == data.id) {
+                        <span (click)="goToCategory(levelOne)">{{
+                          levelOne.name
+                        }}</span>
+                      }
+                    }
+                  }
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+@if (data) {
+  <div class="main">
+    <div class="row part-top-page px-2">
+      <div class="col-12 col-lg-4">
+        <app-product-image [images]="data.images"></app-product-image>
+      </div>
+
+      <div class="col-12 col-lg-8 mt-4 mt-lg-0">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="persian-title">{{ data.productPersianTitle }}</h1>
+            <h3 class="english-title mb-3">{{ data.productEnglishTitle }}</h3>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h2 class="title-feature">ویژگی های محصول</h2>
+            <ul class="list-feature">
+              @for (spec of specs; track spec) {
+                <li>
+                  <strong>{{ spec.key }} : </strong> &nbsp;{{ spec.value }}
+                </li>
+              }
+            </ul>
+            <div class="brand">
+              <span> برند :: </span>
+              <a class="brand-link">{{ data.brandPersianTitle }}</a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <app-product-price
+              [data]="data"
+              [productId]="productId"
+            ></app-product-price>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row part-down-page my-3">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link"
+             [ngClass]="{ active: state === 'specifications' }"
+             (click)="changeState('specifications')">
+            <i class="fa fa-list-ul"></i>
+            مشخصات
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [ngClass]="{ active: state === 'comments' }"
+             (click)="changeState('comments')">
+            <i class="fa fa-comment"></i>
+            نظرات
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [ngClass]="{ active: state === 'question-answer' }"
+             (click)="changeState('question-answer')">
+            <i class="fa fa-question"></i>
+            پرسش و پاسخ
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content mt-4">
+        <div
+          class="tab-pane fade"
+          [ngClass]="{ show: state === 'specifications', active: state === 'specifications' }"
+          role="tabpanel">
+          <app-product-specifications
+            class="p-0"
+            [productSpecifications]="data.productSpecifications"
+          ></app-product-specifications>
+        </div>
+        <div
+          class="tab-pane fade"
+          [ngClass]="{ show: state === 'comments', active: state === 'comments' }"
+          role="tabpanel">
+          <app-product-comments [productId]="productId"></app-product-comments>
+        </div>
+        <div
+          class="tab-pane fade"
+          [ngClass]="{ show: state === 'question-answer', active: state === 'question-answer' }"
+          role="tabpanel">
+          <app-question-answer></app-question-answer>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="related-products">
+      <app-products-related-bar
+        [productId]="productId"
+      ></app-products-related-bar>
+    </div>
+  </div>
+}
+
+

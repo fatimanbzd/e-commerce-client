@@ -1,0 +1,19 @@
+.main {
+  box-shadow: 0 2px 4px rgba(126, 142, 177, 0.12);
+  padding: 30px 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  #rules-title {
+    font-weight: 600;
+  }
+
+  p {
+    color: #666;
+    font-size: 15px;
+    text-align: justify;
+    line-height: 40px;
+    padding: 0 15px;
+    margin: 0;
+  }
+}

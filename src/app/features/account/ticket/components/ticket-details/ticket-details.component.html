@@ -1,0 +1,95 @@
+@if (data) {
+  <div class="col-12">
+    <h2 class="title-ticket">مشاهده تیکت شماره  {{ ticketId }}</h2>
+  </div>
+
+  <div class="col-12 mb-2 p-2">
+    <div class="dt-sl dt-sn">
+      <div class="row px-3">
+        <div class="col-md-3 p-3 ticket-details-box">
+          <span class="heading mb-3">موضوع تیکت</span>
+          <span class="status">{{ data.title }}</span>
+        </div>
+        <div class="col-md-3 p-3 ticket-details-box">
+          <span class="heading mb-3">تاریخ ایجاد</span>
+          <span class="status">{{ data.createDate | persianDate }}</span>
+        </div>
+        <div class="col-md-3 p-3 ticket-details-box">
+          <span class="heading mb-3">الویت</span>
+          <span class="status">{{ data.priority  | enumLabel: PriorityTicketLabel }}</span>
+        </div>
+        <div class="col-md-3 p-3 ticket-details-box">
+          <span class="heading mb-3">وضعیت</span>
+          <span class="status">{{ data.status | enumLabel: ticketStatusLabel }}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row px-3">
+    <div class="col-12 main-message d-flex flex-column">
+      <div class="box-body p-4" #scrollContainer>
+        <div class="col-12 initial-message my-2">
+          <div class="body-message-one">
+            @if (data.body) {
+              <span>{{ data.body }}</span>
+            }
+          </div>
+            @if (data.fileId) {
+          <div class="body-message-one">
+              <div class="attachment-card" (click)="download(data.fileId)">
+                <i nz-icon nzType="paper-clip" class="paperclip"></i>
+                <div class="attachment-name">
+                  فایل
+                </div>
+                <i class="fa fa-download"></i>
+              </div>
+          </div>
+            }
+          <span class="message-timestamp mt-1 mb-3">{{ data.createDate | relativeTime }}</span>
+        </div>
+
+        @for (chat of data.items; track chat) {
+          <div class="col-12" [ngClass]="{'admin-answer-container': chat.isSupport}">
+            @if (chat.body) {
+              <div class="body-message" [ngClass]="chat.isSupport ? 'admin-answer' : 'customer-response'">
+                <span>{{ chat.body }}</span>
+              </div>
+            }
+            @if(chat.fileId){
+            <div class="body-message mt-2" [ngClass]="chat.isSupport ? 'admin-answer' : 'customer-response'">
+                <div class="attachment-card" (click)="download(chat.fileId)">
+                  <i nz-icon nzType="paper-clip" class="paperclip"></i>
+                  <div class="attachment-name">
+                    فایل
+                  </div>
+                  <i class="fa fa-download"></i>
+                </div>
+            </div>
+            }
+
+            <span class="message-timestamp mt-1 mb-3"
+                  [ngClass]="{'float': chat.isSupport}">{{ chat.createDate | relativeTime }}</span>
+          </div>
+        }
+      </div>
+      <form id="profile-form"
+            [formGroup]="form"
+            (ngSubmit)="send()">
+        <div class="col-12 send-message-customer mt-3 mb-3">
+          <label class="icon-message file me-2">
+            <i class="fa fa-paperclip"></i>
+            <input type="file" formControlName="file" (change)="onFileSelected($event)"/>
+          </label>
+          <input type="text" class="box-input" formControlName="Body">
+          <i class="fa fa-paper-plane fa-flip-horizontal  icon-message ms-2" type="send" (click)="send()"></i>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+}

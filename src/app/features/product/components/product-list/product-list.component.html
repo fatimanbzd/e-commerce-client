@@ -1,0 +1,27 @@
+@defer {
+  @if (productList.length) {
+    @for (product of productList; track product) {
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1 px-res-0 p-2">
+        <a
+          [routerLink]="['/pages/content/products', product.id, product.title]"
+        >
+          <app-product-item [productItem]="product"></app-product-item>
+        </a>
+      </div>
+    }
+    @if (pageSize >= 12) {
+      <div class="row">
+        <div class="pagination">
+          <app-product-pagination
+            [itemsPerPage]="pageSize"
+            [totalItems]="totalCount"
+          ></app-product-pagination>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="empty-container justify-content-between align-items-center">
+      <div class="d-flex notFound-text">کالایی با این مشخصات پیدا نکردیم!</div>
+    </div>
+  }
+}

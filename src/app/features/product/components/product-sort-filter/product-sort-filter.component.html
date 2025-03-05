@@ -1,0 +1,57 @@
+<div class="products-list-sort-type ah-tab-wrapper dt-sl">
+  <div class="ah-tab dt-sl">
+    <a
+      class="ah-tab-item"
+      routerLink="#"
+      [ngClass]="{ active: sortType === 0 }"
+      style="transform: translateX(0px)"
+      (click)="onSortChange($event, 0)"
+      >جدید ترین</a
+    >
+
+    <a
+      class="ah-tab-item"
+      routerLink="#"
+      style="transform: translateX(0px)"
+      [ngClass]="{ active: sortType === 1 }"
+      (click)="onSortChange($event, 1)"
+      >پربازدید ترین</a
+    >
+
+    <a
+      class="ah-tab-item"
+      routerLink="#"
+      style="transform: translateX(0px)"
+      [ngClass]="{ active: sortType === 2 }"
+      (click)="onSortChange($event, 2)"
+      >پرفروش ترین</a
+    >
+
+    <a
+      class="ah-tab-item"
+      routerLink="#"
+      style="transform: translateX(0px)"
+      [ngClass]="{ active: sortType === 3 }"
+      (click)="onSortChange($event, 3)"
+      >ارزان ترین</a
+    >
+
+    <a
+      class="ah-tab-item"
+      routerLink="#"
+      style="transform: translateX(0px)"
+      [ngClass]="{ active: sortType === 4 }"
+      (click)="onSortChange($event, 4)"
+      >گران ترین</a
+    >
+
+    <a
+      class="ah-tab-item"
+      routerLink="#"
+      style="transform: translateX(0px)"
+      [ngClass]="{ active: sortType === 5 }"
+      (click)="onSortChange($event, 5)"
+      >تخفیف دارها</a
+    >
+  </div>
+</div>

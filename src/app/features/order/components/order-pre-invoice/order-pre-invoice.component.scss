@@ -1,0 +1,19 @@
+.btn-gift {
+  border: none;
+  height: 40px;
+  cursor: pointer;
+  color: white;
+  background-color: #94d400;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0),
+    0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.empty-data {
+  border: #2a2a2a dashed thin;
+  background-color: #f5f5f6;
+  color: #5d5b5b;
+  border-radius: 5px;
+}

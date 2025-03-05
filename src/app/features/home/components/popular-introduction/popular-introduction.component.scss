@@ -1,0 +1,16 @@
+.main {
+  margin-top: 30px;
+
+  .middle-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .main {
+    margin-top: 20px;
+  }
+}

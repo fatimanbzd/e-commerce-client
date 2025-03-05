@@ -1,0 +1,132 @@
+.checkout-summary-summary {
+  list-style: none;
+  padding: 15px 10px;
+  color: #515151;
+  margin-bottom: 0;
+
+  li {
+    padding-bottom: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 5px 0;
+
+    span:first-child {
+      font-weight: bold;
+    }
+
+    span:last-child {
+      margin-right: auto;
+    }
+  }
+}
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0 #{"/* rtl:ignore */"};
+}
+
+.popover-arrow {
+  position: absolute;
+}
+
+.tooltip {
+  position: absolute;
+}
+
+.tooltip-arrow {
+  position: absolute;
+}
+
+.checkout-summary-divider {
+  padding: 0 10px;
+
+  div {
+    width: 100%;
+    height: 4px;
+    border: 1px solid #e6e6e6;
+    border-right: none;
+    border-left: none;
+  }
+}
+
+.checkout-summary-content {
+  padding: 15px 0;
+  color: #a0a0a0;
+  font-size: 11px;
+  line-height: 2;
+
+  .checkout-summary-price-title {
+    text-align: center;
+    color: #676767;
+    font-size: 18px;
+    line-height: normal;
+  }
+
+  .checkout-summary-price-value {
+    color: var(--primary-color) !important;
+    text-align: center;
+    font-size: 1.071rem;
+    line-height: normal;
+
+    .checkout-summary-price-value-amount {
+      font-size: 1.429rem;
+      line-height: 2;
+      font-weight: 700;
+    }
+  }
+}
+
+.btn-primary-cm {
+  background-color: var(--primary-color) !important;
+}
+
+.help-sn {
+  .fa {
+    color: #ababab;
+    font-size: 21px;
+    line-height: 1.048;
+    cursor: pointer;
+  }
+}
+
+.btn-qLand-primary {
+  position: relative;
+  border: 2px solid #fff;
+
+  &::before {
+    content: "";
+    width: 44px;
+    height: 140%;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 60px 0 0 60px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  .arrow-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    fill: #fff;
+    font-weight: bold !important;
+  }
+}
+
+
+.checkout-container {
+  padding-top: 0;
+  padding-bottom: 1px;
+  position: static;
+  transform: none;
+
+}

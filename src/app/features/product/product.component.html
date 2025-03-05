@@ -1,0 +1,25 @@
+<div class="row" style="transform: none">
+  <div
+    class="col-lg-3 col-md-12 col-sm-12 sticky-sidebar"
+    style="
+      position: relative;
+      overflow: visible;
+      box-sizing: border-box;
+      min-height: 1px;
+    "
+  >
+    <app-product-side-bar-filter></app-product-side-bar-filter>
+  </div>
+
+  <div id="category-products-div" class="col-lg-9 col-md-12 col-sm-12">
+    <div class="dt-sl px-0 search-amazing-tab">
+      @if (!emptyData) {
+        <app-product-sort-filter class="row"></app-product-sort-filter>
+      }
+      <app-product-list
+        class="row mb-3 mx-0 px-res-0"
+        (emptyData)="setEmptyData()"
+      ></app-product-list>
+    </div>
+  </div>
+</div>

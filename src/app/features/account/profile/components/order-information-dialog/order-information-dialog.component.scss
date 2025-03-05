@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 58px;
+  border-bottom: 1px solid #dadada;
+  padding: 10px 15px;
+
+  .icon-close {
+    font-size: 30px;
+    cursor: pointer;
+  }
+}
+
+.main{
+  padding:0 30px 30px 40px;
+
+.inp{
+  border-radius: 5px;
+  outline: none;
+  background: rgba(218, 218, 218, 0.3215686275);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.85);
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+
+}
+
+  .label-inp{
+    margin:  10px;
+    font-size: 15px;
+  }
+}

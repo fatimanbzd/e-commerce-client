@@ -1,0 +1,36 @@
+<form novalidate [formGroup]="form" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label class="control-label col-sm-3 mb-3">شماره همراه</label>
+    <input
+      type="tel"
+      class="form-control mb-4 text-end ltr"
+      [maxlength]="11"
+      [minlength]="11"
+      formControlName="mobileNumber"
+      numbersOnly
+      placeholder="09123456789"
+      [disabled]="submitted"
+      [ngClass]="{
+        'is-valid': form.touched && form.valid,
+        'is-invalid': form.touched && form.invalid,
+      }"
+    />
+
+    <div class="box-login-button">
+      <i class="fa fa-arrow-circle-right icon-login"></i>
+
+      <button
+        type="submit"
+        class="btn-qLand-primary login-button"
+        [disabled]="submitted"
+      >
+        دریافت رمز
+        @if (submitted) {
+          <div class="spinner-border" role="status">
+            <span class="sr-only">بارگذاری...</span>
+          </div>
+        }
+      </button>
+    </div>
+  </div>
+</form>

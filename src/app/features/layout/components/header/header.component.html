@@ -1,0 +1,110 @@
+<div class="row align-items-center">
+  <div class="col-lg-2 col-md-5 hidden-sm">
+    <a routerLink="/pages/content/home">
+      <img
+        class="logo img-fluid"
+        src="assets/images/qland_logo.png"
+        alt="Logo"
+      />
+    </a>
+  </div>
+  <div class="col-lg-2 col-md-3 col-2">
+    <nav class="main-menu dt-sl">
+      @if (!router.url.includes("/content/order")) {
+        <app-header-category-menu></app-header-category-menu>
+      }
+    </nav>
+  </div>
+
+  <div class="col-lg-6 col-md-8 hidden-sm">
+    @if (!router.url.includes("/content/order")) {
+      <app-header-search-bar></app-header-search-bar>
+    }
+  </div>
+
+  <div class="col-md-2 col-6 topbar-left user-bar">
+    <ul class="nav float-end">
+      <li class="nav-item btn-group">
+        <a
+          class="nav-link"
+          routerLink="{{ cartCount ? '/pages/content/order/cart' : '/#' }}"
+          data-toggle="dropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <svg class="icon" viewBox="0 0 24 24">
+            <path
+              d="M22.713 4.077C22.4317 3.73944 22.0796 3.46795 21.6815 3.28182C21.2835 3.09568 20.8494 2.99946 20.41 3H4.242L4.2 2.649C4.11405 1.91942 3.76338 1.24673 3.21449 0.758478C2.6656 0.270223 1.95663 0.000341793 1.222 0L1 0C0.734784 0 0.48043 0.105357 0.292893 0.292893C0.105357 0.48043 0 0.734784 0 1C0 1.26522 0.105357 1.51957 0.292893 1.70711C0.48043 1.89464 0.734784 2 1 2H1.222C1.46693 2.00003 1.70334 2.08996 1.88637 2.25272C2.06941 2.41547 2.18634 2.63975 2.215 2.883L3.591 14.583C3.73385 15.7998 4.31848 16.9218 5.23391 17.736C6.14934 18.5502 7.33185 19 8.557 19H19C19.2652 19 19.5196 18.8946 19.7071 18.7071C19.8946 18.5196 20 18.2652 20 18C20 17.7348 19.8946 17.4804 19.7071 17.2929C19.5196 17.1054 19.2652 17 19 17H8.557C7.93806 16.9983 7.3348 16.8051 6.82994 16.4471C6.32507 16.089 5.94331 15.5835 5.737 15H17.657C18.8293 15.0001 19.9643 14.5882 20.8638 13.8364C21.7633 13.0846 22.37 12.0407 22.578 10.887L23.363 6.533C23.4414 6.10101 23.4237 5.65707 23.3114 5.23264C23.1991 4.80821 22.9948 4.41368 22.713 4.077ZM21.4 6.178L20.614 10.532C20.4891 11.225 20.1245 11.852 19.5839 12.3032C19.0433 12.7544 18.3612 13.0011 17.657 13H5.419L4.478 5H20.41C20.5569 4.99912 20.7022 5.03062 20.8355 5.09226C20.9689 5.15389 21.087 5.24415 21.1815 5.35661C21.276 5.46907 21.3446 5.60097 21.3824 5.74294C21.4201 5.8849 21.4262 6.03344 21.4 6.178Z"
+            />
+            <path
+              d="M7 24C8.10457 24 9 23.1046 9 22C9 20.8954 8.10457 20 7 20C5.89543 20 5 20.8954 5 22C5 23.1046 5.89543 24 7 24Z"
+            />
+            <path
+              d="M17 24C18.1046 24 19 23.1046 19 22C19 20.8954 18.1046 20 17 20C15.8954 20 15 20.8954 15 22C15 23.1046 15.8954 24 17 24Z"
+            />
+          </svg>
+          @if (cartCount !== null) {
+            <span class="count">{{ cartCount }}</span>
+          }
+        </a>
+        @if (!router.url.includes("/order")) {
+          <ul class="dropdown-menu cart dropdown-menu-start text-center">
+            <app-header-product-basket
+              (changeCartItemCount)="calculateTotalCount($event)"
+            ></app-header-product-basket>
+          </ul>
+        }
+      </li>
+      <li
+        class="nav-item account dropdown"
+        style="padding: 0; border: 0 !important"
+      >
+        <a
+          class="nav-link"
+          href="#"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          style="border: none"
+        >
+          <svg class="icon-user" viewBox="0 0 18 24">
+            <path
+              d="M9 12C10.1867 12 11.3467 11.6481 12.3334 10.9888C13.3201 10.3295 14.0892 9.39246 14.5433 8.2961C14.9974 7.19975 15.1162 5.99335 14.8847 4.82946C14.6532 3.66558 14.0818 2.59648 13.2426 1.75736C12.4035 0.918247 11.3344 0.346802 10.1705 0.115291C9.00666 -0.11622 7.80026 0.00259972 6.7039 0.456726C5.60754 0.910851 4.67047 1.67989 4.01118 2.66658C3.35189 3.65328 3 4.81331 3 6C3 7.5913 3.63214 9.11742 4.75736 10.2426C5.88258 11.3679 7.4087 12 9 12ZM9 2C9.79113 2 10.5645 2.2346 11.2223 2.67412C11.8801 3.11365 12.3928 3.73836 12.6955 4.46927C12.9983 5.20017 13.0775 6.00444 12.9231 6.78036C12.7688 7.55629 12.3878 8.26902 11.8284 8.82843C11.269 9.38784 10.5563 9.7688 9.78036 9.92314C9.00444 10.0775 8.20017 9.99827 7.46927 9.69552C6.73836 9.39277 6.11365 8.88008 5.67412 8.22228C5.2346 7.56449 5 6.79113 5 6C5 4.93914 5.42143 3.92172 6.17157 3.17158C6.92172 2.42143 7.93913 2 9 2Z"
+            />
+            <path
+              d="M9 14C6.61386 14.0026 4.32622 14.9517 2.63896 16.639C0.951708 18.3262 0.00264685 20.6139 0 23C0 23.2652 0.105357 23.5196 0.292893 23.7071C0.48043 23.8946 0.734784 24 1 24C1.26522 24 1.51957 23.8946 1.70711 23.7071C1.89464 23.5196 2 23.2652 2 23C2 21.1435 2.7375 19.363 4.05025 18.0503C5.36301 16.7375 7.14348 16 9 16C10.8565 16 12.637 16.7375 13.9497 18.0503C15.2625 19.363 16 21.1435 16 23C16 23.2652 16.1054 23.5196 16.2929 23.7071C16.4804 23.8946 16.7348 24 17 24C17.2652 24 17.5196 23.8946 17.7071 23.7071C17.8946 23.5196 18 23.2652 18 23C17.9974 20.6139 17.0483 18.3262 15.361 16.639C13.6738 14.9517 11.3861 14.0026 9 14Z"
+            />
+          </svg>
+        </a>
+        <div class="dropdown-menu user dropdown-menu-sm dropdown-menu-left">
+          @if (isAuthenticated) {
+            <a class="dropdown-item"
+              >کاربر:
+              <span>{{ userName }}</span>
+            </a>
+            <a class="dropdown-item" routerLink="/pages/dashboard">
+              <i class="fa fa-light fa-address-card"></i> <span>پروفایل</span>
+            </a>
+
+            <a class="dropdown-item" routerLink="/pages/dashboard/order-detail">
+              <i class="fa fa-light fa-user"></i><span>سفارشات من</span>
+            </a>
+            <hr />
+            <a class="dropdown-item" (click)="logout()">
+              <i class="fa fa-arrow-right"></i> خروج
+            </a>
+          } @else {
+            <a class="dropdown-item" routerLink="/login">
+              <i class="fa fa-address-card-o" aria-hidden="true"></i>
+              ورود به سایت
+            </a>
+            <a class="dropdown-item" routerLink="/login">
+              <i class="fa fa-user-plus"></i>
+              ثبت نام
+            </a>
+          }
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

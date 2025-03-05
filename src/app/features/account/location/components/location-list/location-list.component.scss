@@ -1,0 +1,76 @@
+.dt-sl {
+  width: 100%;
+  height: auto;
+
+  .table-responsive {
+    box-shadow: 0 2px 4px rgba(126, 142, 177, 0.12);
+    background-color: #fff;
+  }
+
+  .title-table {
+    background-color: #00bfd6 !important;
+    color: #fff;
+    font-weight: normal;
+    padding: 15px;
+
+    :last-child {
+      border-radius: 5px 0 0 0;
+    }
+    :first-child {
+      border-radius: 0 5px 0 0;
+    }
+  }
+
+  .edit-btn {
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+
+    i {
+      color: #ffc107;
+    }
+  }
+
+  .delete-btn {
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+
+    i {
+      color: #dc3545 !important;
+    }
+  }
+}
+
+td {
+  padding: 0.75rem;
+  font-size: 14px;
+}
+
+.no-address {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 107px;
+  background-color: #f8f9fa;
+}
+
+.delete-bor {
+  border-color: #fff;
+}
+
+tr:last-child {
+  border-bottom: #fff !important;
+}
+
+.custom-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  white-space: nowrap;
+}
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+}

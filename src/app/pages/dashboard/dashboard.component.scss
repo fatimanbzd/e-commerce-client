@@ -1,0 +1,25 @@
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 4px rgba(126, 142, 177, 0.12);
+  box-shadow: 0 2px 4px rgba(126, 142, 177, 0.12);
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.sticky-sidebar {
+  position: relative;
+  overflow: visible;
+  box-sizing: border-box;
+  min-height: 1px;
+
+  .StickySidebar {
+    padding-top: 0;
+    padding-bottom: 1px;
+    position: static;
+    transform: none;
+  }
+}

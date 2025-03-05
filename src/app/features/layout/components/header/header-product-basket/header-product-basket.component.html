@@ -1,0 +1,91 @@
+@if (cart && cart.cartItems && cart.cartItems.length > 0) {
+  <div class="dropdown-header text-start">سبد خرید</div>
+  <div class="dropdown-list-icons">
+    @for (cart of cart.cartItems; track cart) {
+      <div class="dropdown-item">
+        <div class="dropdown-item-icon col-3">
+          <a
+            [routerLink]="[
+              '/pages/content/products',
+              cart.productId,
+              cart.productPersianTitle,
+            ]"
+          >
+            <img
+              src="{{ cart.imageSrc | fullSrc }}"
+              alt="{{ cart.productPersianTitle }}"
+            />
+          </a>
+        </div>
+
+        <div class="mr-3 ml-3 col-6 cart-title">
+          <a
+            [routerLink]="[
+              '/pages/content/products',
+              cart.productId,
+              cart.productPersianTitle,
+            ]"
+          >
+            {{ cart.productPersianTitle }}
+            <div>رنگ: {{ cart.colorName }}</div>
+          </a>
+          <div class="pt-1">{{ cart.lastAmount * cart.count | price }} ريال
+            @if (cart.discountAmount) {
+             <span class="amount-discount" dir="rtl">( {{ cart.discountAmount | price }} ريال تخفیف)</span>
+            }
+          </div>
+        </div>
+        <div class="col-2 m-auto cart-quantity-container">
+          <div class="d-flex flex-column">
+            <div class="d-flex justify-content-around cart-quantity">
+              <div class="d-flex cursor-pointer">
+                <span
+                  class="fa fa-plus ms-lg-0"
+                  (click)="changeTheProductCount(true, cart)"
+                ></span>
+              </div>
+              <span class="d-flex flex-column items-center justify-between">
+                <span
+                  class="relative flex items-center justify-center text-count"
+                >{{ cart.count }}</span
+                >
+              </span>
+              <div class="d-flex cursor-pointer">
+                @if (cart.count === cart.lowestNumberOfOrders) {
+                  <i
+                    class="fa fa-trash ms-lg-0"
+                    (click)="delete(cart.productPriceId)"
+                  ></i>
+                } @else {
+                  <i
+                    class="fa fa-minus ms-lg-0"
+                    (click)="changeTheProductCount(false, cart)"
+                  ></i>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <hr/>
+  <div class="dropdown-footer text-center">
+    <div class="dt-sl mb-3">
+      <span class="float-start">جمع :</span>
+      <span class="float-end"> {{ cart.totalPrice | price }} ريال </span>
+    </div>
+    <div class="dt-sl d-flex justify-content-evenly">
+      <a routerLink="/pages/content/order/cart" class="btn btn-primary"
+      >مشاهد سفارش</a
+      >
+      @if (hasProfile) {
+        <a routerLink="/pages/content/order/ship" class="btn btn-qland-default"
+        >پرداخت</a
+        >
+      }
+    </div>
+  </div>
+} @else {
+  <p class="empty-cart">سبد خرید شما خالی است ...</p>
+}

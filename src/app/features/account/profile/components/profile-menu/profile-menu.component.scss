@@ -1,0 +1,44 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 20px;
+  transition: all 0.1s;
+
+  .title-account {
+    font-weight: bold;
+    margin: 8px 0;
+  }
+
+  .account-menu {
+    box-sizing: border-box;
+
+    .list-account-menu {
+      margin-bottom: 0;
+      padding: 0;
+
+      .item-account-menu {
+        display: block;
+        padding: 10px;
+        color: #7b7b7b;
+        font-size: 15px;
+
+        &:hover {
+          color: #00bfd6;
+          background-color: #f6ffff;
+        }
+
+        .icon {
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  color: #00bfd6 !important;
+  background-color: #f6ffff;
+}

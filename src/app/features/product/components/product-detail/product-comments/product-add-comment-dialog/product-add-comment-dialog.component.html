@@ -1,0 +1,185 @@
+<div class="modal-header pb-0">
+  <h5 class="modal-title" id="price-changes-modal-label">ثبت نظر</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+    <span class="fa fa-close"></span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>{{ productName }}</p>
+  <hr>
+  <div class="row comments-add-col--content">
+    <div class="col-md-6 col-sm-12">
+      <div class="form-ui">
+        <form [formGroup]="form" class="px-2" (submit)="submit(form)">
+          <div class="row">
+            <div class="col-12">
+              <label class="form-label mb-2 required">امتیاز دهید
+              </label>
+              <div class="product-review-rate">
+                <ngb-rating formControlName="rating" [max]="5">
+                  <ng-template let-fill="fill" let-index="index">
+                    <i class="fa fa-star{{ fill === 100 ? '' : '-o' }}" [class.filled]="fill === 100"></i>
+                  </ng-template>
+                </ngb-rating>
+              </div>
+
+            </div>
+
+            <div class="col-12">
+              <label class="form-label mb-2 required">عنوان نظر شما </label>
+
+              <input class="form-control pr-2"
+                     name="title"
+                     type="text"
+                     placeholder="عنوان نظر خود را بنویسید"
+                     formControlName="title">
+              @if (form.get('title')?.errors && form.get('title')?.dirty && form.get('title')?.hasError('required')) {
+                <div class="invalid-feedback" [style.display]="
+                form.get('title')?.hasError('required')
+                  ? 'block'
+                  : 'none'
+              ">
+            <span
+              class="error"
+              [style.visibility]="
+                form.get('title')?.hasError('required')
+                  ? 'visible'
+                  : 'hidden'
+              "
+            >
+              عنوان نظر الزامیست
+            </span>
+                </div>
+              }
+            </div>
+
+            <div class="col-12 form-comment-title--positive mt-2 ">
+              <label class="form-label mb-2 pr-2">
+                <span class="fa fa-circle"></span>
+                نقاط قوت
+              </label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control"
+                       aria-describedby="button-addon2"
+                       formControlName="advantage">
+                <div class="input-group-append d-flex">
+                  <button class="btn btn-outline-secondary"
+                          [ngClass]="{'d-none':!form.get('advantage')?.value,'d-flex':form.get('advantage')?.value}"
+                          (click)="addAdvantage()"
+                          type="button">
+                    <span class="fa fa-plus"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-comment-dynamic-labels js-advantages-list" formArrayName="advantages">
+                @for (advantage of advantages.controls; track advantage; let i = $index) {
+
+                  <div class="ui-dynamic-label ui-dynamic-label--positive js-advantage-item">
+                    {{ advantage.value }}
+                    <button type="button" class="ui-dynamic-label-remove js-icon-form-remove"
+                            (click)="removeAdvantage(i)">
+                      <span class="fa fa-close"></span>
+                    </button>
+                  </div>
+
+                }
+              </div>
+            </div>
+            <div class="col-12 form-comment-title--negative mt-2">
+              <label class="form-label mb-2 pr-2">
+                <span class="fa fa-circle"></span>
+                نقاط ضعف
+              </label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder=""
+                       aria-describedby="button-addon2"
+                       formControlName="disadvantage">
+                <div class="input-group-append d-flex">
+                  <button class="btn btn-outline-secondary"
+                          [ngClass]="{'d-none':!form.get('disadvantage')?.value,'d-flex':form.get('disadvantage')?.value}"
+                          (click)="addDisAdvantage()"
+                          type="button">
+                    <span class="fa fa-plus"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-comment-dynamic-labels js-advantages-list" formArrayName="disadvantages">
+                @for (disadvantage of disadvantages.controls; track disadvantage; let i = $index) {
+
+                  <div class="ui-dynamic-label ui-dynamic-label--negative js-advantage-item">
+                    {{ disadvantage.value }}
+                    <button type="button" class="ui-dynamic-label-remove js-icon-form-remove"
+                            (click)="removeDisAdvantage(i)">
+                      <span class="fa fa-close"></span>
+                    </button>
+                  </div>
+
+                }
+              </div>
+            </div>
+
+            <div class="col-12 mt-2">
+              <label class="form-label mb-2 required">متن نظر شما </label>
+              <textarea name="body"
+                        class="form-control pr-2 pt-2"
+                        rows="5"
+                        placeholder="متن خود را بنویسید"
+                        formControlName="body"></textarea>
+              @if (form.get('body')?.errors && form.get('body')?.dirty && form.get('body')?.hasError('required')) {
+                <div class="invalid-feedback" [style.display]="
+                form.get('body')?.hasError('required')
+                  ? 'block'
+                  : 'none'
+              ">
+            <span
+              class="error"
+              [style.visibility]="
+                form.get('body')?.hasError('required')
+                  ? 'visible'
+                  : 'hidden'
+              "
+            >
+              متن نظر الزامیست
+            </span>
+                </div>
+              }
+            </div>
+            <div class="col-12  mt-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="registerAsAnonymous">
+                <label class="form-check-label">
+                  ثبت به عنوان ناشناس
+                </label>
+              </div>
+            </div>
+            <div class="col-12 d-grid gap-2 mt-2">
+              <button class="btn btn-primary px-3" type="submit">
+                ثبت نظر
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h3>دیگران را با نوشتن نظرات خود، برای انتخاب این محصول راهنمایی کنید.</h3>
+      <div class="desc-comment">
+        <p>لطفا پیش از ارسال نظر، خلاصه قوانین زیر را مطالعه کنید:</p>
+        <p>فارسی بنویسید و از کیبورد فارسی استفاده کنید. بهتر است از فضای خالی (Space)
+          بیش&zwnj;از&zwnj;حدِ معمول، شکلک یا ایموجی استفاده نکنید و از کشیدن حروف یا کلمات با
+          صفحه&zwnj;کلید بپرهیزید.</p>
+        <p>نظرات خود را براساس تجربه و استفاده&zwnj;ی عملی و با دقت به نکات فنی ارسال کنید؛
+          بدون
+          تعصب به محصول خاص، مزایا و معایب را بازگو کنید و بهتر است از ارسال نظرات
+          چندکلمه&zwnj;&zwnj;ای خودداری کنید.</p>
+        <p>بهتر است در نظرات خود از تمرکز روی عناصر متغیر مثل قیمت، پرهیز کنید.</p>
+        <p>به کاربران و سایر اشخاص احترام بگذارید. پیام&zwnj;هایی که شامل محتوای توهین&zwnj;آمیز و
+          کلمات نامناسب باشند، حذف می&zwnj;شوند.</p>
+        <p>از ارسال لینک&zwnj;های سایت&zwnj;های دیگر و ارایه&zwnj;ی اطلاعات شخصی خودتان مثل شماره تماس،
+          ایمیل و آی&zwnj;دی شبکه&zwnj;های اجتماعی پرهیز کنید.</p>
+        <p>با توجه به ساختار بخش نظرات، از پرسیدن سوال یا درخواست راهنمایی در این بخش
+          خودداری کرده و سوالات خود را در بخش «پرسش و پاسخ» مطرح کنید.</p>
+      </div>
+    </div>
+  </div>
+</div>

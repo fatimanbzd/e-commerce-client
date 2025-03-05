@@ -1,0 +1,124 @@
+<div class="filter-product-box box">
+  <div class="internal-box">
+    <form [formGroup]="form">
+      <div class="col-12 filter-title">
+        <h2>فیلتر محصولات</h2>
+      </div>
+      <div class="col-12 mb-3 form-group">
+        <div class="input-group widget-search">
+          <input
+            type="text"
+            name="searchProduct"
+            class="form-control"
+            formControlName="productTitle"
+            (keyup.enter)="
+              updateFilters({
+                productTitle: form.controls['productTitle'].value,
+              })
+            "
+            placeholder="نام محصول مورد نظر را بنویسید..."
+          />
+          <button
+            class="input-group-text btn-search-widget"
+            title="جستجو"
+            (click)="
+              updateFilters({
+                productTitle: form.controls['productTitle'].value,
+              })
+            "
+          >
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 mb-3">
+        <div class="filter-items">
+          <div class="accordion">
+            <div class="item">
+              <div class="item-header" (click)="openProperty(0)">
+                <h2>{{ titleFilter[0] }}</h2>
+                <div
+                  class="filter-icon-button"
+                  [style.transform]="currentIndex == 0 ? 'rotate(180deg)' : ''"
+                >
+                  <svg height="13px" width="13px" viewBox="0 0 330 330">
+                    <path
+                      id="XMLID_225_"
+                      d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+	c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+	s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div
+                class="item-content"
+                #height
+                [style.height]="
+                  currentIndex == 0 ? height.scrollHeight + 'px' : '0'
+                "
+              >
+                @for (item of productGuarantyList; track $index) {
+                  <ng-container formArrayName="productGuaranties">
+                    <div class="d-flex check-box-container">
+                      <input
+                        type="checkbox"
+                        [id]="item.value"
+                        (change)="selectGuaranty()"
+                        [formControlName]="$index"
+                      />{{ item.name }}
+                    </div>
+                  </ng-container>
+                }
+              </div>
+
+              <div class="item-header" (click)="openProperty(1)">
+                <h2>{{ titleFilter[1] }}</h2>
+                <div
+                  class="filter-icon-button"
+                  [style.transform]="currentIndex == 1 ? 'rotate(180deg)' : ''"
+                >
+                  <svg height="13px" width="13px" viewBox="0 0 330 330">
+                    <path
+                      id="XMLID_225_"
+                      d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+	c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+	s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div
+                class="item-content"
+                #height
+                [style.height]="
+                  currentIndex == 1 ? height.scrollHeight + 'px' : '0'
+                "
+              >
+                @for (item of brandList; track $index) {
+                  <ng-container formArrayName="brandIds">
+                    <div class="d-flex check-box-container">
+                      <input
+                        type="checkbox"
+                        [id]="item.value"
+                        (change)="selectBrand()"
+                        [formControlName]="$index"
+                      />
+                      {{ item.name }}
+                    </div>
+                  </ng-container>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mb-3 filter-button">
+        <button (click)="filter()">فیلتر</button>
+      </div>
+    </form>
+  </div>
+</div>

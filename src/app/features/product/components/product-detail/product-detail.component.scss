@@ -1,0 +1,78 @@
+.part-top-page {
+  box-shadow: rgba(126, 142, 177, 0.12) 0 2px 4px;
+  padding: 10px;
+  border-radius: 10px;
+
+  .line {
+    border-bottom: 1px solid #dadada;
+    width: 60%;
+  }
+
+  .persian-title {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.65);
+    position: relative;
+    font-weight: bold;
+    white-space: break-spaces;
+    overflow: hidden;
+    line-height: 32px;
+  }
+
+  .english-title {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.77);
+    position: relative;
+    font-family: sans-serif, iranyekan;
+    white-space: break-spaces;
+    overflow: hidden;
+  }
+
+  .title-feature {
+    color: rgb(85, 86, 90);
+    font-size: 1.1rem;
+    line-height: 1.833;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+
+  .list-feature {
+    list-style: circle !important;
+    line-height: 2.5;
+    padding: 0 10px !important;
+    font-size: 13px;
+    li {
+      list-style: circle;
+    }
+  }
+
+  .brand {
+    padding: 0 10px;
+
+    .brand-link {
+      color: rgb(0, 86, 179);
+      border-bottom: 1px dashed rgb(0, 123, 255);
+    }
+  }
+}
+
+.part-down-page {
+  box-shadow: rgba(126, 142, 177, 0.12) 0 2px 4px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .part-top-page {
+    padding: 10px 10px 48px 10px;
+  }
+}
+
+
+.nav-link{
+  color:black !important;
+}
+.nav-link.active{
+  color: var(--bs-nav-link-color) !important;
+}

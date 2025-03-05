@@ -1,0 +1,212 @@
+<div class="header col-12">
+  <h5 class="m-0">{{ id ? "ویرایش آدرس" : "آدرس جدید" }}</h5>
+  <i
+    class="fa fa-close text-secondary"
+    (click)="activeModal.close(false)"
+    [ngbTooltip]="'بستن'"
+  ></i>
+</div>
+<form
+  id="profile-form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  class="setting_form p-1"
+>
+  <div class="row p-0 m-0">
+    <div class="col-lg-6 mt-4">
+      <div class="form-row-title">
+        <label class="form-label required">نام مکان منتخب</label>
+      </div>
+      <div class="form-row form-group">
+        <div class="custom-select-ui">
+          <input
+            type="text"
+            class="input-ui pr-2 box-input form-control"
+            formControlName="title"
+            placeholder="شرکت، خانه و ..."
+            [ngClass]="{
+              'is-valid': submitted && form.controls['title'].valid,
+              'is-invalid': submitted && form.controls['title'].invalid,
+            }"
+          />
+          <span
+            class="error"
+            [style.visibility]="
+              form.get('title')?.invalid &&
+              (form.controls['title'].dirty || submitted)
+                ? 'visible'
+                : 'hidden'
+            "
+          >
+            عنوان الزامیست
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mt-4">
+      <div class="form-row-title">
+        <label class="form-label required">استان</label>
+      </div>
+      <div class="form-row form-group">
+        <div class="custom-select-ui">
+          <select
+            class="box-input form-control"
+            formControlName="provinceCode"
+            (change)="getCities($event.target)"
+            [ngClass]="{
+              'is-valid': submitted && form.controls['provinceCode'].valid,
+              'is-invalid': submitted && form.controls['provinceCode'].invalid,
+            }"
+          >
+            @for (province of provinceList; track province) {
+              <option [value]="province.code">{{ province.title }}</option>
+            }
+          </select>
+          <span
+            class="error"
+            [style.visibility]="
+              (form.controls['provinceCode'].dirty || submitted) &&
+              form.controls['provinceCode'].invalid
+                ? 'visible'
+                : 'hidden'
+            "
+          >
+            استان الزامیست
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mt-4">
+      <div class="form-row-title">
+        <label class="form-label required">شهر</label>
+      </div>
+      <div class="form-row form-group">
+        <div class="custom-select-ui">
+          <select
+            class="right form-label form-control"
+            formControlName="cityCode"
+            [ngClass]="{
+              'is-valid': submitted && form.controls['cityCode'].valid,
+              'is-invalid': submitted && form.controls['cityCode'].invalid,
+            }"
+          >
+            @for (city of cityList; track city) {
+              <option [value]="city.code">{{ city.title }}</option>
+            }
+          </select>
+          <span
+            class="error"
+            [style.visibility]="
+              submitted && form.get('cityCode')?.invalid ? 'visible' : 'hidden'
+            "
+          >
+            شهر الزامیست
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mt-4">
+      <div class="form-row-title">
+        <label class="form-label required">کد پستی</label>
+      </div>
+      <div class="form-row form-group">
+        <input
+          type="text"
+          class="input-ui pr-2 box-input form-control"
+          numbersOnly
+          [maxlength]="10"
+          [minlength]="10"
+          formControlName="postalCode"
+          [ngClass]="{
+            'is-valid': submitted && form.controls['postalCode'].valid,
+            'is-invalid': submitted && form.controls['postalCode'].invalid,
+          }"
+        />
+        @if (form.controls["postalCode"].errors) {
+          <div class="invalid-feedback">
+            <span
+              class="error"
+              [style.display]="
+                submitted && form.get('postalCode')?.hasError('required')
+                  ? 'block'
+                  : 'none'
+              "
+              [style.visibility]="
+                submitted && form.get('postalCode')?.hasError('required')
+                  ? 'visible'
+                  : 'hidden'
+              "
+            >
+              کدپستی الزامیست
+            </span>
+            <span
+              class="error"
+              [style.display]="
+                submitted &&
+                (form.controls['postalCode'].hasError('maxlength') ||
+                  form.controls['postalCode'].hasError('minlength'))
+                  ? 'block'
+                  : 'none'
+              "
+              [style.visibility]="
+                submitted &&
+                (form.controls['postalCode'].hasError('maxlength') ||
+                  form.controls['postalCode'].hasError('minlength'))
+                  ? 'visible'
+                  : 'hidden'
+              "
+            >
+              کد 10 رقمی وارد کنید
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="col-lg-12 mt-4">
+      <div class="form-label">
+        <label class="form-label required"> آدرس پستی </label>
+      </div>
+      <div class="form-row form-group">
+        <textarea
+          name="address"
+          class="input-ui pr-2 text-right box-address-input form-control"
+          formControlName="address"
+          [ngClass]="{
+            'is-valid': submitted && form.controls['address'].valid,
+            'is-invalid': submitted && form.controls['address'].invalid,
+          }"
+          placeholder="آدرس تحویل گیرنده را وارد نمایید"
+        ></textarea>
+        <span
+          class="error"
+          [style.visibility]="
+            (submitted || form.get('address')?.dirty) &&
+            form.controls['address'].invalid
+              ? 'visible'
+              : 'hidden'
+          "
+        >
+          آدرس الزامیست
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <div class="form-row mt-3 footer-modal">
+    <button
+      type="button"
+      class="btn btn-danger btn-with-icon ml-2"
+      (click)="activeModal.close(false)"
+    >
+      بستن
+    </button>
+    <button
+      id="submit-btn"
+      type="submit"
+      class="btn btn-success btn-with-icon ml-2"
+    >
+      {{ id ? "ویرایش" : "ثبت" }}
+    </button>
+  </div>
+</form>
