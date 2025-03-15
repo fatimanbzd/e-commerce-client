@@ -1,12 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
-import { AuthService } from '../../../../../auth/services/auth.service';
-import { Subject, takeUntil } from 'rxjs';
-import { IUserModel } from '@core/interfaces/user.model';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from '../../../../../auth/services/auth.service';
+import {Subject, takeUntil} from 'rxjs';
+import {IUserModel} from '../../../../../auth/interfaces/user.model';
 
 @Component({
     selector: 'app-profile-base-information',
-    imports: [NgOptimizedImage],
     templateUrl: './profile-base-information.component.html',
     styleUrl: './profile-base-information.component.scss'
 })

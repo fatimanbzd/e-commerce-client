@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'jalali-moment';
+import * as moment from 'moment-jalaali';
 
 @Pipe({
   standalone: true,

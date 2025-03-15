@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { AuthService } from '../../../../auth/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { IUserModel } from '@core/interfaces/user.model';
 import { Subject, takeUntil } from 'rxjs';
 import { HeaderCategoryMenuComponent } from './header-category-menu/header-category-menu.component';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +16,7 @@ import { HeaderSearchBarComponent } from './header-search-bar/header-search-bar.
 import { HeaderProductBasketComponent } from './header-product-basket/header-product-basket.component';
 import { CartService } from '../../../../shared/services/cart.service';
 import { ICartResponseModel } from '../../../../shared/interfaces/cart-response.model';
+import {IUserModel} from '../../../../auth/interfaces/user.model';
 
 @Component({
   selector: 'app-header',
@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.authService
           .currentUser()
           .pipe(takeUntil(this._destroy))
-          .subscribe((user) => (this.userName = user.mobileNumber));
+          .subscribe((user) => (this.userName = user?.mobileNumber));
       }
     }
     this.getCarts();

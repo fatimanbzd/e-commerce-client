@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
+import { CommonEngine } from '@angular/ssr/node';
 import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
@@ -16,14 +16,17 @@ export function app(): express.Express {
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
-
   // Example Express Rest API endpoints
+
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',
     index: 'index.html',
   }));
+  const DIST_FOLDER = join(process.cwd(), 'dist/mehr-sepand.qland.client.ui/browser');
+  server.use('/assets', express.static(join(DIST_FOLDER, 'assets'))); // 🔹 Serve assets
+
 
   // All regular routes use the Angular engine
   server.get('**', (req, res, next) => {
@@ -31,7 +34,7 @@ export function app(): express.Express {
 
     commonEngine
       .render({
-        bootstrap,
+             bootstrap,
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,

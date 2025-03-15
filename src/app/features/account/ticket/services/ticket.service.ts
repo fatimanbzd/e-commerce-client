@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ITicketListModel } from '../interfaces/ticket-list.model';
-import { IListModel } from '@core/interfaces/list.model';
 import { ITicketDetailsModel } from '../interfaces/ticket-details.model';
+import {IListModel} from '../../../../shared/interfaces/list.model';
 
 @Injectable({
   providedIn: 'root',

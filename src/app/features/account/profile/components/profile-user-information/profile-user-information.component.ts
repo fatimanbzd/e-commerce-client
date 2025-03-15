@@ -1,19 +1,12 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
-import { DecimalPipe } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
-import { IUserModel } from '@core/interfaces/user.model';
-import { AuthService } from '../../../../../auth/services/auth.service';
+import {Component, EventEmitter, OnDestroy, OnInit, Output,} from '@angular/core';
+import {Subject, takeUntil} from 'rxjs';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../../../auth/services/auth.service';
+import {IUserModel} from '../../../../../auth/interfaces/user.model';
 
 @Component({
     selector: 'app-profile-user-information',
-    imports: [DecimalPipe, RouterLink],
+  imports: [],
     templateUrl: './profile-user-information.component.html',
     styleUrl: './profile-user-information.component.scss'
 })

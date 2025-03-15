@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { IProductCommentAddModel } from '../../../../interfaces/product-comment.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Utilities } from '@core/Utils/utilities';
+import {Utilities} from '../../../../../../shared/Utils/utilities';
 
 @Component({
   selector: 'app-product-add-comment-dialog',

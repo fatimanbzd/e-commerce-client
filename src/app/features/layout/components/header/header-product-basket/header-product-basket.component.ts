@@ -1,20 +1,16 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
-import { CartService } from '../../../../../shared/services/cart.service';
-import {
-  ICartItemResponseModel,
-  ICartResponseModel,
-} from '../../../../../shared/interfaces/cart-response.model';
-import { FullSrcPipe } from '@core/pipes/full-src.pipe';
-import { NgOptimizedImage } from '@angular/common';
-import { PricePipe } from '@core/pipes/price.pipe';
-import { RouterLink } from '@angular/router';
-import { ICartModel } from '../../../../../shared/interfaces/cart.model';
-import { AuthService } from '../../../../../auth/services/auth.service';
+import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {Subject, takeUntil} from 'rxjs';
+import {CartService} from '../../../../../shared/services/cart.service';
+import {ICartItemResponseModel, ICartResponseModel,} from '../../../../../shared/interfaces/cart-response.model';
+import {RouterLink} from '@angular/router';
+import {ICartModel} from '../../../../../shared/interfaces/cart.model';
+import {AuthService} from '../../../../../auth/services/auth.service';
+import {FullSrcPipe} from '../../../../../shared/pipes/full-src.pipe';
+import {PricePipe} from '../../../../../shared/pipes/price.pipe';
 
 @Component({
     selector: 'app-header-product-basket',
-    imports: [FullSrcPipe, NgOptimizedImage, PricePipe, RouterLink],
+  imports: [FullSrcPipe, PricePipe, RouterLink],
     templateUrl: './header-product-basket.component.html',
     styleUrl: './header-product-basket.component.scss'
 })

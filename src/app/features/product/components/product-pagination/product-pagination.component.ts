@@ -1,12 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { NgClass } from '@angular/common';
-import { ProductService } from '../../services/product.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProductService} from '../../services/product.service';
 
 @Component({
     selector: 'app-product-pagination',
-    imports: [NgbPagination, RouterLink, NgClass],
+  imports: [],
     templateUrl: './product-pagination.component.html',
     styleUrl: './product-pagination.component.scss'
 })

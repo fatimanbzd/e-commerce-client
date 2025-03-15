@@ -3,10 +3,12 @@ import {LocationService} from '../../services/location.service';
 import {IAllLocationResponseModel} from '../../interfaces/location-response.model';
 import {LocationUpdateDialogComponent} from '../location-update-dialog/location-update-dialog.component';
 import {NgbModal, NgbTooltip} from '@ng-bootstrap/ng-bootstrap';
-import {ConfirmationDialogComponent} from '@core/components/confirmation-dialog/confirmation-dialog.component';
 import {ToastrService} from 'ngx-toastr';
 import {FormsModule} from '@angular/forms';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {
+  ConfirmationDialogComponent
+} from '../../../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-location-list',

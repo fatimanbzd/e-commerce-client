@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { OnlyNumberDirective } from '@core/directives/only-number.directive';
 import { fromEvent, Subject, takeUntil } from 'rxjs';
 import { CartService } from '../../../../shared/services/cart.service';
 import { ICartResponseModel } from '../../../../shared/interfaces/cart-response.model';
@@ -15,11 +14,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { FullSrcPipe } from '@core/pipes/full-src.pipe';
 import { AuthService } from '../../../../auth/services/auth.service';
-import { Utilities } from '@core/Utils/utilities';
 import { Router } from '@angular/router';
 import { OrderNavigationService } from '../../../../shared/services/order-navigation.service';
+import {OnlyNumberDirective} from '../../../../shared/directives/only-number.directive';
+import {FullSrcPipe} from '../../../../shared/pipes/full-src.pipe';
+import {Utilities} from '../../../../shared/Utils/utilities';
 
 @Component({
   selector: 'app-order-information',

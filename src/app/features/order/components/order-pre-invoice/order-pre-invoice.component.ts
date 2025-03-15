@@ -1,17 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { OrderInvoiceService } from '../../services/order-invoice.service';
-import { fromEvent, Subject, takeUntil } from 'rxjs';
-import { IPreInvoiceModel } from '../../interfaces/pre-invoice.model';
-import { PricePipe } from '@core/pipes/price.pipe';
-import { PersianDatePipe } from '@core/pipes/persian-date.pipe';
-import { CartService } from '../../../../shared/services/cart.service';
-import { ICartResponseModel } from '../../../../shared/interfaces/cart-response.model';
-import { OrderNavigationService } from '../../../../shared/services/order-navigation.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {OrderInvoiceService} from '../../services/order-invoice.service';
+import {fromEvent, Subject, takeUntil} from 'rxjs';
+import {IPreInvoiceModel} from '../../interfaces/pre-invoice.model';
+import {CartService} from '../../../../shared/services/cart.service';
+import {ICartResponseModel} from '../../../../shared/interfaces/cart-response.model';
+import {OrderNavigationService} from '../../../../shared/services/order-navigation.service';
+import {PricePipe} from '../../../../shared/pipes/price.pipe';
+import {PersianDatePipe} from '../../../../shared/pipes/persian-date.pipe';
 
 @Component({
     selector: 'app-order-pre-invoice',
-    imports: [RouterLink, PricePipe, PersianDatePipe],
+  imports: [PricePipe, PersianDatePipe],
     templateUrl: './order-pre-invoice.component.html',
     styleUrl: './order-pre-invoice.component.scss'
 })

@@ -1,13 +1,7 @@
-import {
-  ActivatedRouteSnapshot,
-  CanActivateFn,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
-import { Observable } from 'rxjs';
-import { inject } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree,} from '@angular/router';
+import {Observable} from 'rxjs';
+import {inject} from '@angular/core';
+import {AuthService} from '../services/auth.service';
 
 export const NoAuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -17,7 +11,9 @@ export const NoAuthGuard: CanActivateFn = (
   | Promise<boolean | UrlTree>
   | boolean
   | UrlTree => {
+  const router = inject(Router);
   const isAuthentication = inject(AuthService).isLoggedIn();
-  if (isAuthentication) inject(Router).navigateByUrl('/pages/content');
+  debugger
+  if (isAuthentication)  return router.createUrlTree(['/pages/content']);
   return !isAuthentication;
 };

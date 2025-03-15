@@ -1,18 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PricePipe } from '@core/pipes/price.pipe';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ICartItemResponseModel, ICartResponseModel,} from '../../../../shared/interfaces/cart-response.model';
+import {catchError, forkJoin, Subject, takeUntil} from 'rxjs';
+import {CartService} from '../../../../shared/services/cart.service';
+import {ProductGuarantyLabel} from '../../../../shared/enums/product-guaranty.enum';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ICartModel} from '../../../../shared/interfaces/cart.model';
+import {RouterLink} from '@angular/router';
+import {EnumLabelPipe} from '../../../../shared/pipes/enum-label.pipe';
+import {PricePipe} from '../../../../shared/pipes/price.pipe';
+import {FullSrcPipe} from '../../../../shared/pipes/full-src.pipe';
 import {
-  ICartItemResponseModel,
-  ICartResponseModel,
-} from '../../../../shared/interfaces/cart-response.model';
-import { catchError, forkJoin, Subject, takeUntil } from 'rxjs';
-import { CartService } from '../../../../shared/services/cart.service';
-import { EnumLabelPipe } from '@core/pipes/enum-label.pipe';
-import { ProductGuarantyLabel } from '../../../../shared/enums/product-guaranty.enum';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationDialogComponent } from '@core/components/confirmation-dialog/confirmation-dialog.component';
-import { ICartModel } from '../../../../shared/interfaces/cart.model';
-import { FullSrcPipe } from '@core/pipes/full-src.pipe';
-import { RouterLink } from '@angular/router';
+  ConfirmationDialogComponent
+} from '../../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-order-products',

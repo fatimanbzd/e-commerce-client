@@ -1,22 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../features/layout/components/navbar/navbar.component';
-import { HeaderComponent } from '../features/layout/components/header/header.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FooterComponent } from '../features/layout/components/footer/footer.component';
+import {Component, Inject, Input, PLATFORM_ID} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {HeaderComponent} from '../features/layout/components/header/header.component';
+import {FooterComponent} from '../features/layout/components/footer/footer.component';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
     selector: 'app-pages',
     templateUrl: './pages.component.html',
-    imports: [
-        RouterOutlet,
-        NavbarComponent,
-        HeaderComponent,
-        DashboardComponent,
-        FooterComponent,
-    ],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+  ],
     styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent {
   @Input() isCollapsed = false;
+  isBrowser: boolean;
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 }

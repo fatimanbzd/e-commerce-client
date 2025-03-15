@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OrderWalletService } from '../../services/order-wallet.service';
 import { finalize, map, Subject, takeUntil } from 'rxjs';
-import { PricePipe } from '@core/pipes/price.pipe';
-import { EnumLabelPipe } from '@core/pipes/enum-label.pipe';
 import { WalletTypeLabel } from '../../enums/wallet-type.enum';
 import { FormsModule } from '@angular/forms';
 import {
@@ -16,6 +14,8 @@ import { NgClass } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderPaymentConfirmationDialogComponent } from '../order-payment-confirmation-dialog/order-payment-confirmation-dialog.component';
 import { OrderNavigationService } from '../../../../shared/services/order-navigation.service';
+import {EnumLabelPipe} from '../../../../shared/pipes/enum-label.pipe';
+import {PricePipe} from '../../../../shared/pipes/price.pipe';
 
 @Component({
     selector: 'app-order-wallet',

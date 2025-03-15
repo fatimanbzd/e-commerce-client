@@ -1,19 +1,17 @@
-import { Component, HostListener, OnDestroy } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchService } from '../../../../../shared/services/search.service';
-import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
-import { SlicePipe } from '@angular/common';
-import { IProductSearchResponseModel } from '../../../../../shared/interfaces/product-search.model';
-import { FullSrcPipe } from '@core/pipes/full-src.pipe';
-import { PricePipe } from '@core/pipes/price.pipe';
-import { Router, RouterLink } from '@angular/router';
+import {Component, HostListener, OnDestroy} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SearchService} from '../../../../../shared/services/search.service';
+import {debounceTime, distinctUntilChanged, Subject, takeUntil} from 'rxjs';
+import {IProductSearchResponseModel} from '../../../../../shared/interfaces/product-search.model';
+import {Router, RouterLink} from '@angular/router';
+import {FullSrcPipe} from '../../../../../shared/pipes/full-src.pipe';
+import {PricePipe} from '../../../../../shared/pipes/price.pipe';
 
 @Component({
     selector: 'app-header-search-bar',
     imports: [
         ReactiveFormsModule,
         FormsModule,
-        SlicePipe,
         FullSrcPipe,
         PricePipe,
         RouterLink,

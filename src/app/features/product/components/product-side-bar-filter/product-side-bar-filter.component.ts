@@ -1,24 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
-import { EnumConvertorUtils } from '@core/Utils/EnumConvertoModel';
-import { finalize, map, Subject, switchMap, takeUntil } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { IProductResponseModel } from '../../interfaces/product-response.model';
-import {
-  FormArray,
-  FormGroup,
-  FormsModule,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { BrandService } from '../../services/brand.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IEnumModel } from '@core/interfaces/enum.model';
-import { ProductGuarantyLabel } from '../../../../shared/enums/product-guaranty.enum';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {finalize, map, Subject, switchMap, takeUntil} from 'rxjs';
+import {ProductService} from '../../services/product.service';
+import {IProductResponseModel} from '../../interfaces/product-response.model';
+import {FormArray, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule,} from '@angular/forms';
+import {BrandService} from '../../services/brand.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProductGuarantyLabel} from '../../../../shared/enums/product-guaranty.enum';
+import {IEnumModel} from '../../../../shared/interfaces/enum.model';
+import {EnumConvertorUtils} from '../../../../shared/Utils/EnumConvertoModel';
 
 @Component({
     selector: 'app-product-side-bar-filter',
-    imports: [NgForOf, NgIf, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
     templateUrl: './product-side-bar-filter.component.html',
     styleUrl: './product-side-bar-filter.component.scss'
 })

@@ -5,12 +5,11 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {ILocationModel} from '../../interfaces/location.model';
 import {ToastrService} from 'ngx-toastr';
 import {GeneralService} from '../../../../../shared/services/general.service';
-import {ICityModel, IProvinceModel,} from '../../../../../shared/interfaces/general.model';
-import {OnlyNumberDirective} from '@core/directives/only-number.directive';
-import {NgbActiveModal, NgbTooltip} from '@ng-bootstrap/ng-bootstrap';
+import {ICityModel, IProvinceModel,} from '../../../../../shared/interfaces/general.model';import {NgbActiveModal, NgbTooltip} from '@ng-bootstrap/ng-bootstrap';
 import {NgClass} from '@angular/common';
-import {Utilities} from '@core/Utils/utilities';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {OnlyNumberDirective} from '../../../../../shared/directives/only-number.directive';
+import {Utilities} from '../../../../../shared/Utils/utilities';
 
 @Component({
   selector: 'app-location-update-dialog',

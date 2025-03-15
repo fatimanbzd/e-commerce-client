@@ -9,14 +9,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { OnlyNumberDirective } from '@core/directives/only-number.directive';
-import { IUserModel } from '@core/interfaces/user.model';
+
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../../shared/services/cart.service';
 import { OrderNavigationService } from '../../../../shared/services/order-navigation.service';
-import { Utilities } from '@core/Utils/utilities';
-import { IUpdateUserProfileModel } from '../../../../auth/interfaces/user.model';
+import {IUpdateUserProfileModel, IUserModel} from '../../../../auth/interfaces/user.model';
 import { finalize } from 'rxjs';
+import {OnlyNumberDirective} from '../../../../shared/directives/only-number.directive';
+import {Utilities} from '../../../../shared/Utils/utilities';
 
 @Component({
   selector: 'app-order-registration',

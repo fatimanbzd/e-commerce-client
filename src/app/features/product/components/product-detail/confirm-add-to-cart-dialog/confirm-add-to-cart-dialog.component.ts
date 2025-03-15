@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OnlyNumberDirective } from '@core/directives/only-number.directive';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router, RouterLink } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-confirm-add-to-cart-dialog',
-    imports: [FormsModule, OnlyNumberDirective, ReactiveFormsModule, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule],
     templateUrl: './confirm-add-to-cart-dialog.component.html',
     styleUrl: './confirm-add-to-cart-dialog.component.scss'
 })

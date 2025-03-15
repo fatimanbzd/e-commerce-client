@@ -3,10 +3,10 @@ import { IProfileListOrdersModel } from '../../interfaces/profile-list-orders.mo
 import { finalize, Subject, takeUntil } from 'rxjs';
 import { ProfileService } from '../../services/profile.service';
 import { NgForOf, NgStyle } from '@angular/common';
-import { PersianDatePipe } from '@core/pipes/persian-date.pipe';
 import { Router } from '@angular/router';
-import { InvoiceStatusLabel } from '@core/enums/invoice-status.enum';
-import { EnumLabelPipe } from '@core/pipes/enum-label.pipe';
+import {PersianDatePipe} from '../../../../../shared/pipes/persian-date.pipe';
+import {EnumLabelPipe} from '../../../../../shared/pipes/enum-label.pipe';
+import {InvoiceStatusLabel} from '../../../../../shared/enums/invoice-status.enum';
 
 @Component({
   selector: 'app-profile-list-orders',

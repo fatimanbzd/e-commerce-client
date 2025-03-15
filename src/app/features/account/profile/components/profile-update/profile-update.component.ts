@@ -1,36 +1,24 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { AuthService } from '../../../../../auth/services/auth.service';
-import { IUpdateUserProfileModel } from '../../../../../auth/interfaces/user.model';
-import { finalize, Subject, takeUntil } from 'rxjs';
-import { OnlyNumberDirective } from '@core/directives/only-number.directive';
-import { ToastrService } from 'ngx-toastr';
-import { NgClass } from '@angular/common';
-import { Router } from '@angular/router';
-import { IUserModel } from '@core/interfaces/user.model';
-import { Utilities } from '@core/Utils/utilities';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators,} from '@angular/forms';
+import {AuthService} from '../../../../../auth/services/auth.service';
+import {IUpdateUserProfileModel, IUserModel} from '../../../../../auth/interfaces/user.model';
+import {finalize, Subject, takeUntil} from 'rxjs';
+
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
+import {OnlyNumberDirective} from '../../../../../shared/directives/only-number.directive';
+import {Utilities} from '../../../../../shared/Utils/utilities';
 
 @Component({
   selector: 'admin-profile-update',
-  imports: [ReactiveFormsModule, OnlyNumberDirective, NgClass],
+  imports: [ReactiveFormsModule, OnlyNumberDirective],
   templateUrl: './profile-update.component.html',
   styleUrl: './profile-update.component.scss',
 })
 export class ProfileUpdateComponent implements OnInit, OnDestroy {
   submitted = false;
   user!: IUserModel | null;
-  form: FormGroup = this.fb.group({
-    id: [null],
-    name: [null, Validators.required],
-    family: [null, Validators.required],
-    mobileNumber: [{ value: null, disabled: true }, Validators.required],
-    nationalNumber: [null, Validators.required],
-  });
+  form!: FormGroup;
   private _destroy = new Subject<void>();
 
   constructor(
@@ -41,10 +29,20 @@ export class ProfileUpdateComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.initForm();
     this.user = this.authService.getUserAuthenticated();
     this.form.patchValue({ ...this.user });
   }
 
+  initForm(){
+    this.form = this.fb.group({
+      id: [null],
+      name: [null, Validators.required],
+      family: [null, Validators.required],
+      mobileNumber: [{ value: null, disabled: true }, Validators.required],
+      nationalNumber: [null, Validators.required],
+    });
+  }
   update() {
     this.submitted = true;
     if (this.form.invalid) {

@@ -6,10 +6,10 @@ import { ProductAddCommentDialogComponent } from './product-add-comment-dialog/p
 import { IListModel } from '../../../../../shared/interfaces/list.model';
 import { IProductCommentResponseModel } from '../../../interfaces/product-comment.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersianDatePipe } from '@core/pipes/persian-date.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../../../auth/services/auth.service';
 import { ProductCommentPaginationComponent } from './product-comment-pagination/product-comment-pagination.component';
+import {PersianDatePipe} from '../../../../../shared/pipes/persian-date.pipe';
 
 @Component({
   selector: 'app-product-comments',

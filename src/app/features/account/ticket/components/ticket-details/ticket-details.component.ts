@@ -11,15 +11,15 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ITicketDetailsModel } from '../../interfaces/ticket-details.model';
 import { TicketStatusLabel } from '../../enums/status-ticket.enum';
 import { PriorityTicketLabel } from '../../enums/priority-ticket.enum';
-import { EnumLabelPipe } from '@core/pipes/enum-label.pipe';
 import { NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Utilities } from '@core/Utils/utilities';
 import { finalize } from 'rxjs';
-import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { downloadFileHelper } from '@core/Utils/downloadFileHeper';
-import { RelativeTimePipe } from '@core/pipes/relative-time.pipe';
-import { PersianDatePipe } from '@core/pipes/persian-date.pipe';
+import {PersianDatePipe} from '../../../../../shared/pipes/persian-date.pipe';
+import {EnumLabelPipe} from '../../../../../shared/pipes/enum-label.pipe';
+import {RelativeTimePipe} from '../../../../../shared/pipes/relative-time.pipe';
+import {Utilities} from '../../../../../shared/Utils/utilities';
+import {downloadFileHelper} from '../../../../../shared/Utils/downloadFileHeper';
+
 
 @Component({
   selector: 'app-ticket-details',
@@ -28,7 +28,6 @@ import { PersianDatePipe } from '@core/pipes/persian-date.pipe';
     EnumLabelPipe,
     NgClass,
     ReactiveFormsModule,
-    NzIconDirective,
     RelativeTimePipe,
   ],
   templateUrl: './ticket-details.component.html',

@@ -1,14 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
-import { Subject, takeUntil } from 'rxjs';
-import { Router } from '@angular/router';
-import { IBestSellingProductModel } from '../../../../interfaces/bestSellingProduct.model';
-import { BestSellingProductService } from '../../../../services/best-selling-product.service';
-import { ProductItemComponent } from '../../../product-item/product-item.component';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject, takeUntil} from 'rxjs';
+import {Router} from '@angular/router';
+import {IBestSellingProductModel} from '../../../../interfaces/bestSellingProduct.model';
+import {BestSellingProductService} from '../../../../services/best-selling-product.service';
+import {ProductItemComponent} from '../../../product-item/product-item.component';
 
 @Component({
     selector: 'app-products-bar',
-    imports: [NgIf, NgForOf, ProductItemComponent],
+  imports: [ProductItemComponent],
     templateUrl: './products-bar.component.html',
     styleUrl: './products-bar.component.scss'
 })

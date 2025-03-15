@@ -2,11 +2,11 @@ import { Component, DestroyRef, OnInit } from '@angular/core';
 import { ITicketListModel } from '../../interfaces/ticket-list.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TicketService } from '../../services/ticket.service';
-import { PersianDateTimePipe } from '@core/pipes/persian-date-time.pipe';
-import { EnumLabelPipe } from '@core/pipes/enum-label.pipe';
 import { PriorityTicketLabel } from '../../enums/priority-ticket.enum';
 import { TicketStatusLabel } from '../../enums/status-ticket.enum';
 import { Router } from '@angular/router';
+import {PersianDateTimePipe} from '../../../../../shared/pipes/persian-date-time.pipe';
+import {EnumLabelPipe} from '../../../../../shared/pipes/enum-label.pipe';
 
 @Component({
   selector: 'app-ticket-list',

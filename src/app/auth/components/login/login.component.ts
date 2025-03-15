@@ -85,12 +85,14 @@ export class LoginComponent implements OnInit, OnDestroy {
         finalize(() => (this.loading = false)),
       )
       .subscribe(({auth, user}) => {
-        this.authService.doLoginUser(user);
-        this.authService.setAuth(true);
+        if (user) {
+          this.authService.doLoginUser(user);
+          this.authService.setAuth(true);
 
-        if (!user.nationalNumber)
-          this.router.navigateByUrl('/pages/content/order/registration');
-        else this.router.navigate([this.redirectUrl || '/']);
+          if (!user.nationalNumber)
+            this.router.navigateByUrl('/pages/content/order/registration');
+          else this.router.navigate([this.redirectUrl || '/']);
+        }
       });
   }
 

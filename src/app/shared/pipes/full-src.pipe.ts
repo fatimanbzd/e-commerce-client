@@ -1,5 +1,5 @@
 import { Inject, Pipe, PipeTransform } from '@angular/core';
-import { IEnvironmentModel } from '@core/interfaces/environment.model';
+import {IEnvironmentModel} from '../interfaces/environment.model';
 
 @Pipe({
   name: 'fullSrc',

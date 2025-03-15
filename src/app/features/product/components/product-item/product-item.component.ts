@@ -1,12 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgForOf} from "@angular/common";
-import {FullSrcPipe} from "@core/pipes/full-src.pipe";
-import {PricePipe} from "@core/pipes/price.pipe";
 import {IProductItemModel} from "../../interfaces/product-item.model";
+import {FullSrcPipe} from '../../../../shared/pipes/full-src.pipe';
+import {PricePipe} from '../../../../shared/pipes/price.pipe';
 
 @Component({
     selector: 'app-product-item',
-    imports: [NgForOf, FullSrcPipe, PricePipe],
+    imports: [FullSrcPipe, PricePipe],
     templateUrl: './product-item.component.html',
     styleUrl: './product-item.component.scss'
 })

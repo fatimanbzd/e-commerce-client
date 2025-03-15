@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { NgStyle } from '@angular/common';
-import { BreadCrumbComponent } from '../../features/layout/components/bread-crumb/bread-crumb.component';
-import { filter, Subject, takeUntil } from 'rxjs';
-import { OrderNavigationService } from '../../shared/services/order-navigation.service';
+import {Component} from '@angular/core';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {BreadCrumbComponent} from '../../features/layout/components/bread-crumb/bread-crumb.component';
+import {filter, Subject, takeUntil} from 'rxjs';
+import {OrderNavigationService} from '../../shared/services/order-navigation.service';
 
 @Component({
     selector: 'app-content',
-    imports: [RouterOutlet, NgStyle, BreadCrumbComponent],
+  imports: [RouterOutlet, BreadCrumbComponent],
     templateUrl: './content.component.html',
     styleUrl: './content.component.scss'
 })

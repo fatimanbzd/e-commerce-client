@@ -12,9 +12,9 @@ import { ICartItemResponseModel } from '../../../../../shared/interfaces/cart-re
 import { ICartModel } from '../../../../../shared/interfaces/cart.model';
 import { ConfirmAddToCartDialogComponent } from '../confirm-add-to-cart-dialog/confirm-add-to-cart-dialog.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EnumLabelPipe } from '@core/pipes/enum-label.pipe';
 import { ProductGuarantyLabel } from '../../../../../shared/enums/product-guaranty.enum';
-import { PricePipe } from '@core/pipes/price.pipe';
+import {PricePipe} from '../../../../../shared/pipes/price.pipe';
+import {EnumLabelPipe} from '../../../../../shared/pipes/enum-label.pipe';
 
 @Component({
   selector: 'app-product-price',

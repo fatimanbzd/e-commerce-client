@@ -1,15 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { IDataModel } from '../../home/interfaces/data.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {IDataModel} from '../../home/interfaces/data.model';
+import {CacheService} from '../../../shared/services/cache.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  constructor(private http: HttpClient) {}
+  private readonly Categories_KEY = 'categories';
 
-  getCategory(pi: number): Observable<IDataModel> {
-    return this.http.get<any>(`api/Data/${pi}`);
+  constructor(private http: HttpClient,
+              private cacheService: CacheService) {
+  }
+
+  getCategory(pi: number): Observable<IDataModel | null> {
+    return this.cacheService.get<IDataModel>(`api/Data/${pi}`, undefined);
+    // return this.http.get<IDataModel>();
   }
 }

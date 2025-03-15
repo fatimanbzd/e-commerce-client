@@ -1,1 +1,240 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/fonts/font";
+
+:root {
+  --primary-color: #00d1a1;
+  --btn-primary-color: #6777ef;
+}
+
+* {
+  font-family: samim, serif;
+}
+
+body {
+  font-family: samim, serif !important;
+  margin: 0;
+  background-color: white !important;
+  line-height: 1.5;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+::placeholder {
+  color: lightgrey;
+  font-size: small;
+}
+
+@for $i from 1 through 3 {
+  .mr-#{$i} {
+    @if $i == 3 {
+      margin-right: 1rem !important;
+    } @else if $i==2 {
+      margin-right: 0.5rem !important;
+    } @else {
+      margin-right: 0.1rem !important;
+    }
+  }
+
+  .ml-#{$i} {
+    @if $i == 3 {
+      margin-left: 1rem !important;
+    } @else if $i==2 {
+      margin-left: 0.5rem !important;
+    } @else {
+      margin-left: 0.1rem !important;
+    }
+  }
+}
+
+
+.pl-3,
+.px-3 {
+  padding-left: 1rem !important;
+}
+
+.pr-3,
+.px-3 {
+  padding-right: 1rem !important;
+}
+
+.p-2 {
+  padding: 0.5rem !important;
+}
+
+.ant-form-item-explain,
+.ant-form-item-extra {
+  font-size: 12px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.btn-qLand-primary {
+  width: 100%;
+  background-color: #00d1a1;
+  outline: 2px solid #00d1a1;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  font-size: 17px;
+  padding: 5px;
+
+  &:hover {
+    color: #fff;
+    border-color: #49b29a;
+    background: #63eacb !important;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: #a2efdd !important;
+    border: 2px solid #a2efdd;
+  }
+
+  .spinner-border {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.invalid-feedback {
+  text-align: right !important;
+}
+
+label.required:after {
+  content: "*";
+  color: #a60808;
+  font-size: 10px;
+}
+
+.error {
+  margin-top: 5px;
+  font-size: 12px;
+  visibility: hidden;
+  padding-right: 10px;
+}
+
+select:disabled {
+  background-color: #e9ecef;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+//layout
+
+.wrapper {
+  direction: rtl;
+  overflow-x: hidden !important;
+  height: 100vh;
+}
+
+main.main-content {
+  z-index: 0;
+  position: relative;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ececec;
+  border-radius: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c7c6c6;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b7b0b0;
+}
+
+.dt-sl {
+  width: 100%;
+  height: auto;
+  float: right;
+}
+
+@media (min-width: 1200px) {
+  .main-container {
+    max-width: 1400px;
+  }
+}
+
+.dt-sn {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 4px rgba(126, 142, 177, 0.12);
+  box-shadow: 0 2px 4px rgba(126, 142, 177, 0.12);
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+header.main-header {
+  background-color: #fff;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+  position: relative;
+
+  .main-menu {
+    width: 100%;
+    float: right;
+    position: relative;
+    height: 100%;
+  }
+}
+
+.main-header {
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+}

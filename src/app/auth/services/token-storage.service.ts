@@ -1,7 +1,7 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 
-import { isPlatformBrowser } from '@angular/common';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
+import {isPlatformBrowser} from '@angular/common';
+import {LocalStorageService} from '../../shared/services/local-storage.service';
 import {IEnvironmentModel} from "../../shared/interfaces/environment.model";
 import {IAuthModel} from "../interfaces/token.model";
 import {ConfigService} from '../../shared/config/config.service';
@@ -19,13 +19,17 @@ export class TokenStorageService {
     @Inject(PLATFORM_ID) private platformId: object,
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-    const authSettings = this.configService.getAuthSettings();
+    //const authSettings = this.configService.getAuthSettings();
     this.tokenInfo = this.environment.settings.auth.accessToken;
     //this.refreshTokenKey = authSettings.refreshTokenKey || 'refreshToken';
   }
 
   getAccessToken(): IAuthModel | null {
-    return this.isBrowser
+    if (!this.isBrowser) {
+      return null;
+    }
+
+    return this.localStorageService
       ? (this.localStorageService.getItem(this.tokenInfo) as IAuthModel)
       : null;
   }

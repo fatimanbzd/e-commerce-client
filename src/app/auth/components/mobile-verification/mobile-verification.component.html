@@ -11,8 +11,8 @@
       placeholder="09123456789"
       [disabled]="submitted"
       [ngClass]="{
-        'is-valid': form.touched && form.valid,
-        'is-invalid': form.touched && form.invalid,
+        'is-valid': form.get('mobileNumber')?.touched && form.valid,
+        'is-invalid': form.get('mobileNumber')?.touched && form.invalid,
       }"
     />
 

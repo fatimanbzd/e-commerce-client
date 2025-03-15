@@ -7,13 +7,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { Utilities } from '@core/Utils/utilities';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 import { TicketService } from '../../services/ticket.service';
-import { EnumConvertorUtils } from '@core/Utils/EnumConvertoModel';
 import { PriorityTicketLabel } from '../../enums/priority-ticket.enum';
 import { ToastrService } from 'ngx-toastr';
+import {EnumConvertorUtils} from '../../../../../shared/Utils/EnumConvertoModel';
+import {Utilities} from '../../../../../shared/Utils/utilities';
 
 @Component({
   selector: 'app-ticket-registration-dialog',

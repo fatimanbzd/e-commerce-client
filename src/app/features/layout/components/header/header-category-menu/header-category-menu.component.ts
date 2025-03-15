@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
-import { CategoryService } from '../../../services/category.service';
-import { ICategoryModel } from '../../../interfaces/category.model';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../../../auth/services/auth.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject, takeUntil} from 'rxjs';
+import {CategoryService} from '../../../services/category.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../../../auth/services/auth.service';
+import {IDataModel} from '../../../../home/interfaces/data.model';
 
 @Component({
     selector: 'app-header-category-menu',
@@ -12,7 +12,7 @@ import { AuthService } from '../../../../../auth/services/auth.service';
     styleUrl: './header-category-menu.component.scss'
 })
 export class HeaderCategoryMenuComponent implements OnInit, OnDestroy {
-  dataCategory?: ICategoryModel;
+  dataCategory?: IDataModel | null;
   private readonly _destroy = new Subject<void>();
 
   constructor(

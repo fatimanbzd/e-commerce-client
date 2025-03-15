@@ -1,16 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import {
-  NgClass,
-  NgForOf,
-  NgIf,
-  NgOptimizedImage,
-  NgStyle,
-} from '@angular/common';
-import { FullSrcPipe } from '@core/pipes/full-src.pipe';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {NgClass,} from '@angular/common';
+import {FullSrcPipe} from '../../../../../shared/pipes/full-src.pipe';
+
 
 @Component({
     selector: 'app-product-image',
-    imports: [NgForOf, FullSrcPipe, NgStyle, NgIf, NgClass, NgOptimizedImage],
+  imports: [FullSrcPipe, NgClass],
     templateUrl: './product-image.component.html',
     styleUrl: './product-image.component.scss'
 })

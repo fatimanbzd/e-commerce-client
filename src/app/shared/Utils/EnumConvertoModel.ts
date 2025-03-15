@@ -1,4 +1,4 @@
-import { IEnumModel } from '@core/interfaces/enum.model';
+import {IEnumModel} from '../interfaces/enum.model';
 
 export class EnumConvertorUtils {
   static customEnumToModelList<T extends number>(
