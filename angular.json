@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "moment-jalaali"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["src"],
               "sass": {
