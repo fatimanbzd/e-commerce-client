@@ -17,11 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": [
-              "moment-jalaali"
-            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src"],
+              "includePaths": [
+                "src"
+              ],
               "sass": {
                 "silenceDeprecations": [
                   "mixed-decls",
@@ -31,7 +30,7 @@
                 ]
               }
             },
-            "outputPath": "dist/mehr-sepand.qland.client.ui",
+            "outputPath": "dist/MehrSepand.QLand.Client.UI",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -43,7 +42,6 @@
               "src/favicon.ico",
               "src/assets"
             ],
-
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.rtl.min.css",
@@ -78,7 +76,7 @@
               "serviceWorker": "ngsw-config.json"
             },
             "development": {
-              "optimization": false,
+              "optimization": true,
               "extractLicenses": false,
               "sourceMap": true,
               "fileReplacements": [
@@ -102,6 +100,14 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/MehrSepand.QLand.Client.UI/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"

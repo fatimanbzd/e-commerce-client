@@ -1,4 +1,4 @@
-.slider {
+.carousel-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -36,6 +36,11 @@
       object-fit: cover;
       object-position: center center;
       transition: transform 2s ease;
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+      }
 
       @media screen and (max-width: 767px) {
         object-fit: fill;
@@ -96,3 +101,4 @@
     }
   }
 }
+

@@ -1,8 +1,13 @@
-<div class="slider">
+<div class="carousel-container">
   <div class="main-slider">
-    <img [src]="pictures[index]" />
+
+    @for (img of images; track $index) {
+
+      <img [src]="img.src" [alt]="img.alt" [class.active]="$index === activeImageIndex"/>
+
+    }
     <div class="box-icon">
-      <svg class="icon-slider" (click)="Previous()" viewBox="0 0 330 330">
+      <svg class="icon-slider" (click)="onPrevious()" viewBox="0 0 330 330">
         <path
           fill="#1b1e1f99"
           id="XMLID_2_"
@@ -13,7 +18,7 @@
         />
       </svg>
 
-      <svg class="icon-slider" (click)="next()" viewBox="0 0 330 330">
+      <svg class="icon-slider" (click)="onNext()" viewBox="0 0 330 330">
         <path
           fill="#1b1e1f99"
           id="XMLID_6_"
@@ -24,13 +29,13 @@
         />
       </svg>
     </div>
-    <div class="indicators">
-      <span
-        *ngFor="let picture of pictures; let i = index"
-        [class.active]="i === index"
-        (click)="goToSlide(i)"
-      >
-      </span>
-    </div>
+    <!--    <div class="indicators">-->
+    <!--      <span-->
+    <!--        *ngFor="let picture of pictures; let i = index"-->
+    <!--        [class.active]="i === index"-->
+    <!--        (click)="goToSlide(i)"-->
+    <!--      >-->
+    <!--      </span>-->
+    <!--    </div>-->
   </div>
 </div>

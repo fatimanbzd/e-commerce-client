@@ -56,27 +56,24 @@ export class AuthService {
       return of(this.transferState.get<ICustomerLoginResponseModel | null>(Request_Login_KEY, null));
     }
 
-    if (isPlatformBrowser(this.platformId))
       return this.http.post<ICustomerLoginResponseModel>(
         'api/Customers/RequestLogin',
         model,
       ).pipe(tap(data => this.transferState.set(Request_Login_KEY, data)));
 
-    return of(null as any);
   }
 
   otpVerification(model: ICustomerLoginModel): Observable<IAuthModel | null> {
     if (this.transferState.hasKey(Login_KEY)) {
       return of(this.transferState.get<IAuthModel | null>(Login_KEY, null));
     }
-    if (isPlatformBrowser(this.platformId))
+
       return this.http.post<IAuthModel>('api/Customers/Login', model).pipe(
         tap((response) => {
           this.setToken(response);
           this.transferState.set(Login_KEY, response);
         }),
       );
-    return of(null as any);
   }
 
   doLoginUser(user: IUserModel) {
@@ -87,23 +84,20 @@ export class AuthService {
     if (this.transferState.hasKey(User_Info_KEY)) {
       return of(this.transferState.get<IUserModel | null>(User_Info_KEY, null));
     }
-    if (isPlatformBrowser(this.platformId))
+
       return this.http.get<IUserModel>('api/Customers').pipe(tap(data =>
         this.transferState.set(User_Info_KEY, data)));
 
-    return of(null as any);
   }
 
   updateUserProfile(profile: IUpdateUserProfileModel): Observable<void | null> {
     if (this.transferState.hasKey(USER_PROFILE_KEY)) {
       return of(this.transferState.get<void | null>(USER_PROFILE_KEY, null));
     }
-    if (isPlatformBrowser(this.platformId)) {
+
       return this.http.put<void>('api/Customers', profile).pipe(
         tap(() => this.transferState.set(USER_PROFILE_KEY, null))
       );
-    }
-    return of(undefined);
   }
 
   doUpdateUser(user: IUserModel | null) {

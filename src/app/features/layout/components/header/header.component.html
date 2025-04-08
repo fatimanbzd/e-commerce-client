@@ -2,10 +2,10 @@
   <div class="col-lg-2 col-md-5 hidden-sm">
     <a routerLink="/pages/content/home">
       <img
-        class="logo img-fluid"
-        src="assets/images/qland_logo.png"
-        alt="Logo"
-      />
+        ngSrc="/assets/images/qland_logo.png"
+        width="120"
+        height="40"
+        alt="Logo">
     </a>
   </div>
   <div class="col-lg-2 col-md-3 col-2">
@@ -79,7 +79,7 @@
         <div class="dropdown-menu user dropdown-menu-sm dropdown-menu-left">
           @if (isAuthenticated) {
             <a class="dropdown-item"
-              >کاربر:
+            >کاربر:
               <span>{{ userName }}</span>
             </a>
             <a class="dropdown-item" routerLink="/pages/dashboard">
@@ -89,7 +89,7 @@
             <a class="dropdown-item" routerLink="/pages/dashboard/order-detail">
               <i class="fa fa-light fa-user"></i><span>سفارشات من</span>
             </a>
-            <hr />
+            <hr/>
             <a class="dropdown-item" (click)="logout()">
               <i class="fa fa-arrow-right"></i> خروج
             </a>

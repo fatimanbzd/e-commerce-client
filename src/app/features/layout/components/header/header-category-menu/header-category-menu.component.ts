@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {afterRender, Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, takeUntil} from 'rxjs';
 import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../../../auth/services/auth.service';
-import {IDataModel} from '../../../../home/interfaces/data.model';
+import {IDataModel, menuItems} from '../../../../home/interfaces/data.model';
 
 @Component({
     selector: 'app-header-category-menu',
@@ -13,13 +13,18 @@ import {IDataModel} from '../../../../home/interfaces/data.model';
 })
 export class HeaderCategoryMenuComponent implements OnInit, OnDestroy {
   dataCategory?: IDataModel | null;
+  mainCategories: menuItems[] | undefined = undefined;
   private readonly _destroy = new Subject<void>();
 
   constructor(
     private category: CategoryService,
     private router: Router,
     private authService: AuthService,
-  ) {}
+  ) {
+    afterRender(()=>{
+      console.log('next render');
+    })
+  }
 
   ngOnInit() {
     this.getData();
@@ -31,7 +36,15 @@ export class HeaderCategoryMenuComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._destroy))
       .subscribe((data) => {
         this.dataCategory = data;
+        // this.mainCategories = this.dataCategory?.menuItems?.filter(x => x.parentId === 1);
       });
+  }
+
+
+  filterByParent(id: number) {
+    const re=this.dataCategory?.menuItems.filter(x => x.parentId === id);
+    console.log(re)
+    return re;
   }
 
   goToCategory(item: any) {
@@ -40,10 +53,6 @@ export class HeaderCategoryMenuComponent implements OnInit, OnDestroy {
         '/pages/content/products/q-kala/category-digital/mobile',
       );
     }
-  }
-
-  logout() {
-    this.authService.logout();
   }
 
   ngOnDestroy() {

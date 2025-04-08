@@ -10,11 +10,12 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client
   },
   {path: 'pages', renderMode: RenderMode.Client},
-  {path: 'pages/content', renderMode: RenderMode.Client},
   {
     path: 'pages/content/home',
     renderMode: RenderMode.Server
   },
+  {path: 'pages/content', renderMode: RenderMode.Client},
+
   {
     path: 'pages/content/footer-items/**',
     renderMode: RenderMode.Server
@@ -24,7 +25,6 @@ export const serverRoutes: ServerRoute[] = [
     path: 'pages/dashboard',
     renderMode: RenderMode.Client
   },
-  // { path: "redirect", renderMode: RenderMode.Server, status: 301 },
   {
     path: "not_found",
     renderMode: RenderMode.Server,

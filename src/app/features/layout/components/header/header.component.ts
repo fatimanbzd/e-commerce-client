@@ -1,10 +1,10 @@
 import {
   Component,
-  EventEmitter,
+  EventEmitter, Inject,
   Input,
   OnDestroy,
   OnInit,
-  Output,
+  Output, PLATFORM_ID,
   ViewEncapsulation,
 } from '@angular/core';
 import { AuthService } from '../../../../auth/services/auth.service';
@@ -17,6 +17,7 @@ import { HeaderProductBasketComponent } from './header-product-basket/header-pro
 import { CartService } from '../../../../shared/services/cart.service';
 import { ICartResponseModel } from '../../../../shared/interfaces/cart-response.model';
 import {IUserModel} from '../../../../auth/interfaces/user.model';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +30,7 @@ import {IUserModel} from '../../../../auth/interfaces/user.model';
     FormsModule,
     HeaderSearchBarComponent,
     HeaderProductBasketComponent,
+    NgOptimizedImage,
   ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
@@ -47,6 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private cartService: CartService,
     public router: Router,
+    @Inject(PLATFORM_ID) private platformId: object
   ) {
     authService.authStatus$
       .pipe(takeUntil(this._destroy))
