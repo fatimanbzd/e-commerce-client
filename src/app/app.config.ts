@@ -2,7 +2,7 @@ import {ApplicationConfig, importProvidersFrom, isDevMode, LOCALE_ID, provideZon
 import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
-import {provideClientHydration, withEventReplay, withIncrementalHydration} from '@angular/platform-browser';
+import {provideClientHydration} from '@angular/platform-browser';
 import {HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {httpsRequestInterceptor} from './interceptors/https-path-resolver.interceptor';
@@ -19,8 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
-    provideClientHydration(withEventReplay(),
-      withIncrementalHydration()),
+    provideClientHydration(),
     importProvidersFrom(FormsModule),
     provideToastr({
       timeOut: 10000,
@@ -51,9 +50,9 @@ export const appConfig: ApplicationConfig = {
       registrationStrategy: 'registerWhenStable:30000'
     }),
 
-    provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
+    // provideServiceWorker('ngsw-worker.js', {
+    //   enabled: !isDevMode(),
+    //   registrationStrategy: 'registerWhenStable:30000',
+    // }),
   ]
 };

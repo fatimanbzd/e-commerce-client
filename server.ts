@@ -12,18 +12,20 @@ export function app(): express.Express {
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
   const commonEngine = new CommonEngine();
-
-  // Serve static assets from the correct folder
-  server.use('/assets', express.static(join(process.cwd(), 'dist/MehrSepand.QLand.Client.UI/assets'), {
-    maxAge: '0',
-    etag: false,
-  }));
-
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // SSR for all other routes
-  server.get('**', (req, res, next) => {
+  const DIST_FOLDER = join(process.cwd(), 'dist/MehrSepand.QLand.Client.UI/browser');
+  server.use('/assets', express.static(join(DIST_FOLDER, 'assets')));
+
+  server.get(
+    '*.*', // This ensures only files with extensions are served by express.static
+    express.static(browserDistFolder, {
+      maxAge: 0,
+      index: false, // Do not look for index.html in the browserDistFolder
+    })
+  );
+  server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
     commonEngine
       .render({

@@ -1,8 +1,7 @@
-import {afterRender, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, takeUntil} from 'rxjs';
 import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
-import {AuthService} from '../../../../../auth/services/auth.service';
 import {IDataModel, menuItems} from '../../../../home/interfaces/data.model';
 
 @Component({
@@ -19,11 +18,7 @@ export class HeaderCategoryMenuComponent implements OnInit, OnDestroy {
   constructor(
     private category: CategoryService,
     private router: Router,
-    private authService: AuthService,
   ) {
-    afterRender(()=>{
-      console.log('next render');
-    })
   }
 
   ngOnInit() {
@@ -36,15 +31,13 @@ export class HeaderCategoryMenuComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._destroy))
       .subscribe((data) => {
         this.dataCategory = data;
-        // this.mainCategories = this.dataCategory?.menuItems?.filter(x => x.parentId === 1);
+        this.mainCategories = data?.menuItems?.filter(x => x.parentId === 1);
       });
   }
 
 
   filterByParent(id: number) {
-    const re=this.dataCategory?.menuItems.filter(x => x.parentId === id);
-    console.log(re)
-    return re;
+    return this.dataCategory?.menuItems.filter(x => x.parentId === id);
   }
 
   goToCategory(item: any) {
