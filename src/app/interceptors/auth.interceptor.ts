@@ -53,7 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private handle401() {
     this.tokenStorageService.removeTokens();
     this.userInformationStorageService.removeUserInformation();
-    this.router.navigateByUrl('/pages/content/home');
+    this.router.navigateByUrl('/content/home');
     return EMPTY;
   }
 }

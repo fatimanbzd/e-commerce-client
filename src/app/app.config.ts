@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {httpsRequestInterceptor} from './interceptors/https-path-resolver.interceptor';
 import {customerErrorHandlingInterceptor} from './interceptors/error-handling.interceptor';
 import {LoaderInterceptor} from './interceptors/loader.interceptor';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {environment} from '../environments/environment';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {provideToastr} from 'ngx-toastr';
@@ -43,8 +43,7 @@ export const appConfig: ApplicationConfig = {
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     {provide: 'environment', useValue: environment},
 
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
-
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
     {provide: LOCALE_ID, useValue: 'fa-IR'}, provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'

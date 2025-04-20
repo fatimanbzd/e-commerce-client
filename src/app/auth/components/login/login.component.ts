@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authService.setAuth(true);
 
           if (!user.nationalNumber)
-            this.router.navigateByUrl('/pages/content/order/registration');
+            this.router.navigateByUrl('/checkout/registration');
           else this.router.navigate([this.redirectUrl || '/']);
         }
       });

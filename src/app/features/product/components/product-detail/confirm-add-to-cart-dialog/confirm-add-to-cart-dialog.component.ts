@@ -21,6 +21,6 @@ export class ConfirmAddToCartDialogComponent implements OnInit {
 
   goToCart() {
     this.activeModal.dismiss();
-    this.router.navigateByUrl('/pages/content/order/cart');
+    this.router.navigateByUrl('/pages/checkout/cart');
   }
 }

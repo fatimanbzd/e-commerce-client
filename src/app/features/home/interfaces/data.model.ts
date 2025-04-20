@@ -1,9 +1,9 @@
-export interface IDataModel {
-  menuItems: menuItems[];
-  groupStatistics: groupStatistics[];
+export interface ICategoryMenuModel {
+  menuItems: IMenuItemModel[];
+  groupStatistics: IGroupStatisticModel[];
 }
 
-export interface menuItems {
+export interface IMenuItemModel {
   id: number;
   name: string;
   parentId: number;
@@ -11,7 +11,7 @@ export interface menuItems {
   description: string;
 }
 
-export interface groupStatistics {
+export interface IGroupStatisticModel {
   type: number;
   totalCount: number;
 }

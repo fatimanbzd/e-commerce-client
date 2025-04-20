@@ -79,7 +79,7 @@ export class ProductsRelatedBarComponent implements OnDestroy, OnChanges {
 
   goToCProductSpecifications(item: IProductRelatedModel) {
     this.router
-      .navigate([`/pages/content/products/${item.id}/${item.title}`])
+      .navigate([`/pages/content/product/${item.id}/${item.title}`])
       .then(() => {
         window.location.reload();
       });

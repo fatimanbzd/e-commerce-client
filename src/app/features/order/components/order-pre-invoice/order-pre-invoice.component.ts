@@ -28,7 +28,7 @@ export class OrderPreInvoiceComponent implements OnInit, OnDestroy {
     fromEvent(window, 'popstate')
       .pipe(takeUntil(this._destroy))
       .subscribe(() => {
-        this.router.navigateByUrl('/pages/content/order/cart');
+        this.router.navigateByUrl('/pages/checkout/cart');
       });
   }
 

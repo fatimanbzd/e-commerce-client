@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IDataModel} from '../../home/interfaces/data.model';
+import {ICategoryMenuModel} from '../../home/interfaces/data.model';
 import {CacheService} from '../../../shared/services/cache.service';
 
 
@@ -15,8 +15,8 @@ export class CategoryService {
               private cacheService: CacheService) {
   }
 
-  getCategory(pi: number): Observable<IDataModel | null> {
-    return this.http.get<IDataModel>(`api/Data/${pi}`, undefined);
+  getCategory(pi: number): Observable<ICategoryMenuModel> {
+    return this.http.get<ICategoryMenuModel>(`api/Data/${pi}`);
     //return this.http.get<IDataModel>(`api/Data/${pi}`);
   }
 }

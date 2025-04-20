@@ -17,16 +17,16 @@
             <div class="col-Q">
               @for (topLevel of filterByParent(parent.id); track topLevel) {
                 @if (topLevel.parentId == parent.id) {
-                  <span style="font-weight: bold"
-                  >{{ topLevel.name }}
+                  <span style="font-weight: bold">
+                    {{ topLevel.name }}
                     <i class="fa fa-chevron-left icon-data"></i>
                     </span>
 
                   @for (node of filterByParent(topLevel.id); track node) {
                     @if (node.parentId == topLevel.id) {
-                      <span (click)="goToCategory(node)">{{
+                      <a [routerLink]="['/pages/content/category-'+parent.id,node.id]">{{
                           node.name
-                        }}</span>
+                        }}</a>
                     }
                   }
                 }

@@ -85,7 +85,7 @@ export class OrderRegistrationComponent implements OnInit {
               ...this.form.value,
             } as IUserModel);
           this.toastService.success('ثبت نام با موفقیت انجام شد');
-          this.router.navigateByUrl('/pages/content/order/ship');
+          this.router.navigateByUrl('/pages/checkout/ship');
         },
       });
   }

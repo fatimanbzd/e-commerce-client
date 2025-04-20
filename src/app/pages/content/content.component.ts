@@ -23,7 +23,7 @@ export class ContentComponent {
         takeUntil(this._destroy),
       )
       .subscribe((event: NavigationEnd) => {
-        if (!event.urlAfterRedirects.startsWith('/pages/content/order')) {
+        if (!event.urlAfterRedirects.startsWith('/pages/checkout')) {
           orderNavigationService.clearOrderData();
         }
       });

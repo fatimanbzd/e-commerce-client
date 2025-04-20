@@ -65,7 +65,7 @@ export class OrderInformationComponent implements OnInit, OnDestroy {
     fromEvent(window, 'popstate')
       .pipe(takeUntil(this._destroy))
       .subscribe(() => {
-        this.router.navigateByUrl('/pages/content/order/cart');
+        this.router.navigateByUrl('/pages/checkout/cart');
       });
   }
 
@@ -116,7 +116,7 @@ export class OrderInformationComponent implements OnInit, OnDestroy {
     fromEvent(window, 'popstate')
       .pipe(takeUntil(this._destroy))
       .subscribe(() => {
-        this.router.navigateByUrl('/pages/content/order/cart', {
+        this.router.navigateByUrl('/pages/checkout/cart', {
           replaceUrl: true,
         });
       });
@@ -247,7 +247,7 @@ export class OrderInformationComponent implements OnInit, OnDestroy {
         this.resetForm();
 
         this.resetForm();
-        this.router.navigateByUrl('/pages/content/order/pre-invoice');
+        this.router.navigateByUrl('/pages/checkout/pre-invoice');
       });
   }
 

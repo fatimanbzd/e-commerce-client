@@ -3,7 +3,7 @@
     @for (product of productList; track product) {
       <div class="col-lg-3 col-md-4 col-sm-6 col-12 px-10 mb-1 px-res-0 p-2">
         <a
-          [routerLink]="['/pages/content/products', product.id, product.title]"
+          [routerLink]="['/pages/content/product', product.id, product.title]"
         >
           <app-product-item [productItem]="product"></app-product-item>
         </a>

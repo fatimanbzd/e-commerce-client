@@ -25,7 +25,7 @@ export const CartGuard: CanActivateFn = (
       map((carts: ICartResponseModel) => {
         const cartAccess = carts && carts.cartItems?.length > 0;
         if (!cartAccess)
-          return router.createUrlTree(['/pages/content/order/cart']);
+          return router.createUrlTree(['/pages/checkout/cart']);
 
         return cartAccess;
       }),

@@ -10,14 +10,14 @@
   </div>
   <div class="col-lg-2 col-md-3 col-2">
     <nav class="main-menu dt-sl">
-      @if (!router.url.includes("/content/order")) {
+      @if (!router.url.includes("/pages/checkout")) {
         <app-header-category-menu></app-header-category-menu>
       }
     </nav>
   </div>
 
   <div class="col-lg-6 col-md-8 hidden-sm">
-    @if (!router.url.includes("/content/order")) {
+    @if (!router.url.includes("/checkout")) {
       <app-header-search-bar></app-header-search-bar>
     }
   </div>
@@ -27,10 +27,9 @@
       <li class="nav-item btn-group">
         <a
           class="nav-link"
-          routerLink="{{ cartCount ? '/pages/content/order/cart' : '/#' }}"
+          routerLink="/pages/checkout/cart"
           data-toggle="dropdown"
           data-bs-toggle="dropdown"
-          aria-expanded="false"
         >
           <svg class="icon" viewBox="0 0 24 24">
             <path
@@ -47,7 +46,7 @@
             <span class="count">{{ cartCount }}</span>
           }
         </a>
-        @if (!router.url.includes("/order")) {
+        @if (!router.url.includes("/checkout")) {
           <ul class="dropdown-menu cart dropdown-menu-start text-center">
             <app-header-product-basket
               (changeCartItemCount)="calculateTotalCount($event)"

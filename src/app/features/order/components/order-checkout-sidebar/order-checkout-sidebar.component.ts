@@ -56,7 +56,7 @@ export class OrderCheckoutSidebarComponent implements OnInit {
                 (totalPrice, b) => totalPrice + b.price * b.count,
                 0,
               )
-            : this.currentUrl == '/pages/content/order/cart'
+            : this.currentUrl == '/pages/checkout/cart'
               ? null
               : (cart.totalPrice ?? null);
       });
@@ -64,37 +64,37 @@ export class OrderCheckoutSidebarComponent implements OnInit {
 
   onProceedToNextStep(currentUrl: string) {
     switch (currentUrl) {
-      case '/pages/content/order/cart':
+      case '/pages/checkout/cart':
         {
           if (
             this.authService.isLoggedIn() &&
             !this.authService.getUserAuthenticated()?.nationalNumber
           )
-            this.router.navigate(['/pages/content/order/registration']);
-          else this.router.navigate(['/pages/content/order/ship']);
+            this.router.navigate(['/pages/checkout/registration']);
+          else this.router.navigate(['/pages/checkout/ship']);
         }
         break;
-      case '/pages/content/order/registration':
+      case '/pages/checkout/registration':
         this.cartService.setRegistrationForm();
         break;
-      case '/pages/content/order/ship':
+      case '/pages/checkout/ship':
         this.cartService.setFormData(true);
         break;
-      case '/pages/content/order/pre-invoice':
-        this.router.navigate(['/pages/content/order/wallet']);
+      case '/pages/checkout/pre-invoice':
+        this.router.navigate(['/pages/checkout/wallet']);
         break;
-      case '/pages/content/order/wallet':
+      case '/pages/checkout/wallet':
         this.cartService.setWalletForm();
     }
   }
 
   changeButtonName() {
     const URL_TITLE_MAP: { [key: string]: string } = {
-      '/pages/content/order/cart': 'ادامه ثبت سفارش',
-      '/pages/content/order/registration': 'ثبت نام و ادامه',
-      '/pages/content/order/ship': 'ثبت سفارش',
-      '/pages/content/order/pre-invoice': 'انتخاب کیف پول',
-      '/pages/content/order/wallet': 'پرداخت',
+      '/pages/checkout/cart': 'ادامه ثبت سفارش',
+      '/pages/checkout/registration': 'ثبت نام و ادامه',
+      '/pages/checkout/ship': 'ثبت سفارش',
+      '/pages/checkout/pre-invoice': 'انتخاب کیف پول',
+      '/pages/checkout/wallet': 'پرداخت',
     };
     this.orderButtonTitle = URL_TITLE_MAP[this.currentUrl] || 'ادامه ثبت سفارش';
   }

@@ -7,4 +7,7 @@ import { OrderProductsComponent } from '../../../../features/order/components/or
     templateUrl: './order-product-page.component.html',
     styleUrl: './order-product-page.component.scss'
 })
-export class OrderProductPageComponent {}
+export class OrderProductPageComponent {
+
+
+}

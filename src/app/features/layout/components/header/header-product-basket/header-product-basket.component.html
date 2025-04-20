@@ -6,7 +6,7 @@
         <div class="dropdown-item-icon col-3">
           <a
             [routerLink]="[
-              '/pages/content/products',
+              '/pages/content/product',
               cart.productId,
               cart.productPersianTitle,
             ]"
@@ -21,7 +21,7 @@
         <div class="mr-3 ml-3 col-6 cart-title">
           <a
             [routerLink]="[
-              '/pages/content/products',
+              '/pages/content/product',
               cart.productId,
               cart.productPersianTitle,
             ]"
@@ -76,11 +76,11 @@
       <span class="float-end"> {{ cart.totalPrice | price }} ريال </span>
     </div>
     <div class="dt-sl d-flex justify-content-evenly">
-      <a routerLink="/pages/content/order/cart" class="btn btn-primary"
+      <a [routerLink]="['/pages/checkout/cart']" class="btn btn-primary"
       >مشاهد سفارش</a
       >
       @if (hasProfile) {
-        <a routerLink="/pages/content/order/ship" class="btn btn-qland-default"
+        <a routerLink="/pages/checkout/ship" class="btn btn-qland-default"
         >پرداخت</a
         >
       }

@@ -64,7 +64,7 @@ export class ProductsBarComponent implements OnInit, OnDestroy {
 
   goToCProductSpecifications(item: IBestSellingProductModel) {
     this.router.navigateByUrl(
-      `/pages/content/products/${item.id}/${item.title}`,
+      `/pages/content/product/${item.id}/${item.title}`,
     );
   }
 

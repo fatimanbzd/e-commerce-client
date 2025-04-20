@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
 import {Subject, takeUntil} from 'rxjs';
 import {CartService} from '../../../../../shared/services/cart.service';
 import {ICartItemResponseModel, ICartResponseModel,} from '../../../../../shared/interfaces/cart-response.model';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {ICartModel} from '../../../../../shared/interfaces/cart.model';
 import {AuthService} from '../../../../../auth/services/auth.service';
 import {FullSrcPipe} from '../../../../../shared/pipes/full-src.pipe';
@@ -24,6 +24,7 @@ export class HeaderProductBasketComponent implements OnDestroy {
   constructor(
     private cartService: CartService,
     private authService: AuthService,
+    private router: Router,
   ) {
     const user = this.authService.getUserAuthenticated();
     this.hasProfile = this.authService.isLoggedIn() && !!user?.nationalNumber;
@@ -92,6 +93,9 @@ export class HeaderProductBasketComponent implements OnDestroy {
         },
       });
   }
+onRoute(){
+    this.router.navigateByUrl('/checkout/cart')
+}
 
   ngOnDestroy() {
     this._destroy.next();

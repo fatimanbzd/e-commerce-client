@@ -52,7 +52,7 @@ export class HeaderSearchBarComponent implements OnDestroy {
   }
 
   goToDetailProduct(id: number, title: string) {
-    this.router.navigateByUrl(`/pages/content/products/${id}/${title}`);
+    this.router.navigateByUrl(`/pages/content/product/${id}/${title}`);
   }
 
   ngOnDestroy() {

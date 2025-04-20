@@ -91,19 +91,19 @@
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
-          height:auto;
+          height: auto;
           align-content: flex-start;
 
-          span {
+          a {
             color: black;
             padding-left: 70px;
             height: auto;
             line-height: 30px;
+            text-decoration: none;
           }
 
-          span:hover {
+          a:hover {
             color: #a49f9f;
-            cursor: pointer;
           }
         }
       }
@@ -120,6 +120,7 @@
   visibility: visible;
   transition: all 2ms linear 0s;
 }
+
 .icon {
   transform: scale(0.8);
   color: #212529d6;

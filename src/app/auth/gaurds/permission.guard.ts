@@ -4,9 +4,9 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { inject } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import {Observable} from 'rxjs';
+import {inject} from '@angular/core';
+import {AuthService} from '../services/auth.service';
 
 export const permissionGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,

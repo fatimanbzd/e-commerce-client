@@ -6,32 +6,39 @@ import { dirname, join } from 'node:path';
 import bootstrap from './src/main.server';
 
 export function app(): express.Express {
-  const server = express();
+  const DIST_FOLDER = join(process.cwd(), 'dist/MehrSepand.QLand.Client.UI/browser');
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = join(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
+  const server = express();
+
   const commonEngine = new CommonEngine();
   server.set('view engine', 'html');
-  server.set('views', browserDistFolder);
 
-  const DIST_FOLDER = join(process.cwd(), 'dist/MehrSepand.QLand.Client.UI/browser');
+  server.set('views', browserDistFolder);
   server.use('/assets', express.static(join(DIST_FOLDER, 'assets')));
 
+  // server.get(
+  //   '*.*', // This ensures only files with extensions are served by express.static
+  //   express.static(browserDistFolder, {
+  //     maxAge: 0,
+  //     index: false, // Do not look for index.html in the browserDistFolder
+  //   })
+  // );
   server.get(
-    '*.*', // This ensures only files with extensions are served by express.static
-    express.static(browserDistFolder, {
-      maxAge: 0,
-      index: false, // Do not look for index.html in the browserDistFolder
+    '*.*',
+    express.static(DIST_FOLDER, {
+      maxAge: '1y'
     })
   );
   server.get('*', (req, res, next) => {
-    const { protocol, originalUrl, baseUrl, headers } = req;
+    const { originalUrl } = req;
     commonEngine
       .render({
         bootstrap,
         documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
+        url: originalUrl,
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       })
