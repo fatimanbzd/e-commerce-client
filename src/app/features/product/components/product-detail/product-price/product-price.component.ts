@@ -32,7 +32,6 @@ export class ProductPriceComponent implements OnInit, OnDestroy {
   colors: any[] = [];
   vendors!: any[];
   guaranties!: any[];
-  test: number = 1;
   price: number | string = 0;
   isConfirmLoading = false;
   isExist: boolean = false;

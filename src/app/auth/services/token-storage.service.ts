@@ -13,7 +13,6 @@ export class TokenStorageService {
   private tokenInfo: string;
   private isBrowser: boolean;
   constructor(
-    private configService: ConfigService,
     private localStorageService: LocalStorageService,
     @Inject('environment') private environment: IEnvironmentModel,
     @Inject(PLATFORM_ID) private platformId: object,
