@@ -19,13 +19,6 @@ export function app(): express.Express {
   server.set('views', browserDistFolder);
   server.use('/assets', express.static(join(DIST_FOLDER, 'assets')));
 
-  // server.get(
-  //   '*.*', // This ensures only files with extensions are served by express.static
-  //   express.static(browserDistFolder, {
-  //     maxAge: 0,
-  //     index: false, // Do not look for index.html in the browserDistFolder
-  //   })
-  // );
   server.get(
     '*.*',
     express.static(DIST_FOLDER, {
