@@ -102,7 +102,7 @@
           "defaultConfiguration": "development"
         },
         "server": {
-          "builder": "@angular-devkit/build-angular:server",
+          "builder": "@angular/ssr:server",
           "options": {
             "outputPath": "dist/MehrSepand.QLand.Client.UI/server",
             "main": "src/main.server.ts",

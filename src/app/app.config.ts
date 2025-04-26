@@ -44,14 +44,12 @@ export const appConfig: ApplicationConfig = {
     {provide: 'environment', useValue: environment},
 
     {provide: LocationStrategy, useClass: PathLocationStrategy},
-    {provide: LOCALE_ID, useValue: 'fa-IR'}, provideServiceWorker('ngsw-worker.js', {
+    {provide: LOCALE_ID, useValue: 'fa-IR'},
+
+    provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
     }),
 
-    // provideServiceWorker('ngsw-worker.js', {
-    //   enabled: !isDevMode(),
-    //   registrationStrategy: 'registerWhenStable:30000',
-    // }),
   ]
 };
