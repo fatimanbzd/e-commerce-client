@@ -26,12 +26,12 @@ export function app(): express.Express {
     })
   );
   server.get('*', (req, res, next) => {
-    const { originalUrl } = req;
+    const {protocol, originalUrl,headers } = req;
     commonEngine
       .render({
         bootstrap,
         documentFilePath: indexHtml,
-        url: originalUrl,
+        url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       })
