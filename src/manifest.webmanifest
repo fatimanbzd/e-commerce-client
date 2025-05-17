@@ -1,9 +1,9 @@
 {
   "lang": "fa",
   "dir": "rtl",
-  "name": "QLand",
+  "name": "Ecommerce",
   "display": "standalone",
-  "short_name": "QLand",
+  "short_name": "Ecommerce",
   "scope":"/",
   "start_url": "/",
   "background_color": "#ffffff",

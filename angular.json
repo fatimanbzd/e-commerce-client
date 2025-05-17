@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MehrSepand.QLand.Client.UI": {
+    "MehrSepand.Ecommerce.Client.UI": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,7 +30,7 @@
                 ]
               }
             },
-            "outputPath": "dist/MehrSepand.QLand.Client.UI",
+            "outputPath": "dist/MehrSepand.Ecommerce.Client.UI",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -93,10 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MehrSepand.QLand.Client.UI:build:production"
+              "buildTarget": "MehrSepand.Ecommerce.Client.UI:build:production"
             },
             "development": {
-              "buildTarget": "MehrSepand.QLand.Client.UI:build:development"
+              "buildTarget": "MehrSepand.Ecommerce.Client.UI:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -104,7 +104,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/MehrSepand.QLand.Client.UI/server",
+            "outputPath": "dist/MehrSepand.Ecommerce.Client.UI/server",
             "main": "src/main.server.ts",
             "tsConfig": "tsconfig.server.json"
           }

@@ -1,6 +1,6 @@
 {
-  "name": "MehrSepand.QLand.Client.UI",
-  "short_name": "MehrSepand.QLand.Client.UI",
+  "name": "MehrSepand.Ecommerce.Client.UI",
+  "short_name": "MehrSepand.Ecommerce.Client.UI",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

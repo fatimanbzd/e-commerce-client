@@ -19,10 +19,10 @@ export class LocalStorageService {
   setItem(key: string, value: unknown) {
     try {
       if (this.isBrowser)
-        localStorage.setItem(`QLand-token-${key}`, JSON.stringify(value));
+        localStorage.setItem(`Ecommerce-token-${key}`, JSON.stringify(value));
     } catch (e) {
       if (this.isBrowser)
-        localStorage.setItem(`QLand-token-${key}`, value as string);
+        localStorage.setItem(`Ecommerce-token-${key}`, value as string);
     }
   }
 
@@ -35,12 +35,12 @@ export class LocalStorageService {
   getItem(key: string): unknown {
     try {
       if (this.isBrowser) {
-        const value = localStorage.getItem(`QLand-token-${key}`);
+        const value = localStorage.getItem(`Ecommerce-token-${key}`);
         return JSON.parse(value as string);
       } else return null;
     } catch (e) {
       if (this.isBrowser) {
-        const value = localStorage.getItem(`QLand-token-${key}`);
+        const value = localStorage.getItem(`Ecommerce-token-${key}`);
         return JSON.parse(value as string);
       }
       return null;
@@ -53,6 +53,6 @@ export class LocalStorageService {
    * @param {string} key
    */
   removeItem(key: string) {
-    if (this.isBrowser) localStorage.removeItem(`QLand-token-${key}`);
+    if (this.isBrowser) localStorage.removeItem(`Ecommerce-token-${key}`);
   }
 }

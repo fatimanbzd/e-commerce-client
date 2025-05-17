@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import bootstrap from './src/main.server';
 
 export function app(): express.Express {
-  const DIST_FOLDER = join(process.cwd(), 'dist/MehrSepand.QLand.Client.UI/browser');
+  const DIST_FOLDER = join(process.cwd(), 'dist/MehrSepand.Ecommerce.Client.UI/browser');
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = join(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');

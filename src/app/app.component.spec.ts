@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'MehrSepand.QLand.Client.UI' title`, () => {
+  it(`should have the 'MehrSepand.Ecommerce.Client.UI' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('MehrSepand.QLand.Client.UI');
+    expect(app.title).toEqual('MehrSepand.Ecommerce.Client.UI');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, MehrSepand.QLand.Client.UI');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, MehrSepand.Ecommerce.Client.UI');
   });
 });

@@ -13,7 +13,7 @@ import {isPlatformBrowser} from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent  implements OnInit, OnDestroy {
-  title = 'MehrSepand.QLand.Client.UI';
+  title = 'MehrSepand.Ecommerce.Client.UI';
   isLoggedIn = false;
   private readonly _destroy = new Subject<void>();
 
