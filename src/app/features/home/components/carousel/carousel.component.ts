@@ -36,6 +36,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy{
       alt: 'Carousel4'
     }
   ];
+  intervalId: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: object){
   }
